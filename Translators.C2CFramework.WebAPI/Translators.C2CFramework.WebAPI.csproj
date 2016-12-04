@@ -97,20 +97,44 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ChequeImageData\ArchievedCheques\cheque_sample - Copy.jpg" />
+    <Content Include="ChequeImageData\ArchievedCheques\cheque_sample.jpg" />
+    <Content Include="ChequeImageData\ArchievedCheques\cheque_sample123.jpg" />
+    <Content Include="ChequeImageData\CroppedCheques\NumericalAmount\NumericalAmount_217.jpg" />
+    <Content Include="ChequeImageData\CroppedCheques\NumericalAmount\NumericalAmount_38942.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ChequeCrop\CropTypeFactory.cs" />
+    <Compile Include="ChequeCrop\ICropType.cs" />
+    <Compile Include="ChequeCrop\LiveChequeCrop.cs" />
+    <Compile Include="Controllers\ATMsController.cs" />
     <Compile Include="Controllers\BanksController.cs" />
+    <Compile Include="Controllers\ChequesController.cs" />
+    <Compile Include="Controllers\CropPointsController.cs" />
+    <Compile Include="Controllers\LiveChequePathsController.cs" />
+    <Compile Include="DAL\Interfaces\IATMRepository.cs" />
     <Compile Include="DAL\Interfaces\IBankRepository.cs" />
+    <Compile Include="DAL\Interfaces\IChequeRepository.cs" />
+    <Compile Include="DAL\Interfaces\ICropPointRepository.cs" />
+    <Compile Include="DAL\Interfaces\ILiveChequePathRepository.cs" />
+    <Compile Include="DAL\Repositories\ATMRepository.cs" />
     <Compile Include="DAL\Repositories\BankRepository.cs" />
+    <Compile Include="DAL\Repositories\ChequeRepository.cs" />
+    <Compile Include="DAL\Repositories\CropPointRepository.cs" />
+    <Compile Include="DAL\Repositories\LiveChequePathRepository.cs" />
     <Compile Include="Enum\CropType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ATM.cs" />
     <Compile Include="Models\Bank.cs" />
+    <Compile Include="Models\Cheque.cs" />
+    <Compile Include="Models\CropPoint.cs" />
+    <Compile Include="Models\LiveChequePath.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +148,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ChequeImageData\CroppedCheques\Amount\" />
+    <Folder Include="ChequeImageData\CroppedCheques\Date\" />
+    <Folder Include="ChequeImageData\CroppedCheques\Logo\" />
+    <Folder Include="ChequeImageData\CroppedCheques\MICR\" />
+    <Folder Include="ChequeImageData\CroppedCheques\Signature\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
