@@ -66,7 +66,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app.js" />
+    <Content Include="assets\lib\angular-aria\angular-aria.js" />
+    <Content Include="assets\lib\angular-loading-bar\loading-bar.min.css" />
+    <Content Include="assets\lib\angular-loading-bar\loading-bar.min.js" />
+    <Content Include="assets\lib\angular-material\angular-messages.min.js" />
+    <Content Include="assets\lib\angular-messages\angular-messages.js" />
+    <Content Include="assets\lib\angular-resource\angular-resource.min.js" />
+    <Content Include="assets\lib\angular-ui-router\angular-ui-router.min.js" />
+    <Content Include="assets\lib\angular\angular.min.js" />
+    <Content Include="assets\lib\jquery\jquery.min.js" />
+    <Content Include="controllers\dashboardController.js" />
+    <Content Include="index.html" />
     <Content Include="packages.config" />
+    <Content Include="bower.json" />
+    <Content Include="package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -75,16 +89,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="index.html" />
+    <Content Include="views\dashboard.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="controllers\" />
     <Folder Include="services\" />
-    <Folder Include="views\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -244,3 +244,4 @@ ModelManifest.xml
 *.VC.opendb
 *.VC.db
 /Translators.C2CFramework.Database/Translators.C2CFramework.Database.jfm
+/Translators.C2CFramework.App/bower_components

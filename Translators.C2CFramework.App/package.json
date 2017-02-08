@@ -1,0 +1,19 @@
+{
+  "name": "translators.c2cframework.app",
+  "version": "1.0.0",
+  "description": "Cheque to Cash Framework",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chandimacpgz/C2CFramework.git"
+  },
+  "author": "Chandima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chandimacpgz/C2CFramework/issues"
+  },
+  "homepage": "https://github.com/chandimacpgz/C2CFramework#readme"
+}
