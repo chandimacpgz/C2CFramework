@@ -1,17 +1,15 @@
-﻿<md-toolbar md-scroll-shrink class="md-hue-2">
-    <h2 class="md-toolbar-tools">Cash to Cheque Dashboard</h2>
-</md-toolbar>
-<span><br /><br /></span>
-<div>
-    <md-container>
-        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToIndexProfile()">Profile and Leave</md-button>
-            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToBalances()">Balances</md-button>
-            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToLeave()">Activities</md-button>
-            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToLeaveForm()">Leave Form</md-button>
-            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToRules()">Rule Engine</md-button>
-            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToSetApprovers()">Approvers</md-button>
-            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToLeaveRequest()">Leave Request</md-button>
-        </section>
-    </md-container>
+﻿<div>
+    <md-content class="md-padding">
+        <md-nav-bar md-selected-nav-item="currentNavItem"
+                    nav-bar-aria-label="navigation links">
+            <md-nav-item md-nav-click="goToHome()" name="page1">
+                Home
+            </md-nav-item>
+            <md-nav-item md-nav-click="goToAddCheque()" name="page2">
+                Add Cheque
+            </md-nav-item>
+            <md-nav-item md-nav-click="goto('page3')" name="page3">
+                About Us
+            </md-nav-item>
+        </md-nav-bar>
 </div>

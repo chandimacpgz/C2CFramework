@@ -15,7 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.6.2",
+    "angular": "1.5.5",
     "angular-ui-router": "^0.4.2",
     "angular-animate": "^1.6.2",
     "angular-resource": "^1.6.2",
@@ -24,23 +24,26 @@
     "jquery": "^3.1.1"
   },
   "install": {
-        "path": "assets/lib",
-        "sources": {
-          "angular": "bower_components/angular/angular.min.js",
-          "angular-ui-router": "bower_components/angular-ui-router/release/angular-ui-router.min.js",
-          "angular-animate": "bower_componets/angular-animate/angular-animate.min.js",
-          "angular-resource": "bower_components/angular-resource/angular-resource.min.js",
-          "angular-material": [
-            "bower_components/angular-material/angular-material.min.js",
-            "bower_components/angular-material/angular-material.min.css",
-            "bower_components/angular-aria/angular-aria.min.js",
-            "bower_components/angular-messages/angular-messages.min.js"
-          ],  
-          "angular-loading-bar": [
-            "bower_components/angular-loading-bar/build/loading-bar.min.css",
-            "bower_components/angular-loading-bar/build/loading-bar.min.js"
-          ],
-          "jquery": "bower_components/jquery/dist/jquery.min.js"
-        }
+    "path": "assets/lib",
+    "sources": {
+      "angular": "bower_components/angular/angular.min.js",
+      "angular-ui-router": "bower_components/angular-ui-router/release/angular-ui-router.min.js",
+      "angular-animate": "bower_components/angular-animate/angular-animate.min.js",
+      "angular-resource": "bower_components/angular-resource/angular-resource.min.js",
+      "angular-material": [
+        "bower_components/angular-material/angular-material.min.js",
+        "bower_components/angular-material/angular-material.min.css",
+        "bower_components/angular-aria/angular-aria.min.js",
+        "bower_components/angular-messages/angular-messages.min.js"
+      ],
+      "angular-loading-bar": [
+        "bower_components/angular-loading-bar/build/loading-bar.min.css",
+        "bower_components/angular-loading-bar/build/loading-bar.min.js"
+      ],
+      "jquery": "bower_components/jquery/dist/jquery.min.js"
     }
+  },
+  "resolutions": {
+    "angular": "^1.2.9"
+  }
 }

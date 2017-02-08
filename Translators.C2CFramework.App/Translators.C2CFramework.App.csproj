@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="assets\lib\angular-animate\angular-animate.min.js" />
     <Content Include="assets\lib\angular-loading-bar\loading-bar.min.css" />
     <Content Include="assets\lib\angular-loading-bar\loading-bar.min.js" />
     <Content Include="assets\lib\angular-material\angular-aria.min.js" />
@@ -77,7 +78,9 @@
     <Content Include="assets\lib\angular-ui-router\angular-ui-router.min.js" />
     <Content Include="assets\lib\angular\angular.min.js" />
     <Content Include="assets\lib\jquery\jquery.min.js" />
+    <Content Include="controllers\addChequeController.js" />
     <Content Include="controllers\dashboardController.js" />
+    <Content Include="controllers\homeController.js" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="bower.json" />
@@ -90,7 +93,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="views\addCheque.html" />
     <Content Include="views\dashboard.html" />
+    <Content Include="views\home.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
