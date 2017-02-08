@@ -67,11 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.js" />
-    <Content Include="assets\lib\angular-aria\angular-aria.js" />
     <Content Include="assets\lib\angular-loading-bar\loading-bar.min.css" />
     <Content Include="assets\lib\angular-loading-bar\loading-bar.min.js" />
+    <Content Include="assets\lib\angular-material\angular-aria.min.js" />
+    <Content Include="assets\lib\angular-material\angular-material.min.css" />
+    <Content Include="assets\lib\angular-material\angular-material.min.js" />
     <Content Include="assets\lib\angular-material\angular-messages.min.js" />
-    <Content Include="assets\lib\angular-messages\angular-messages.js" />
     <Content Include="assets\lib\angular-resource\angular-resource.min.js" />
     <Content Include="assets\lib\angular-ui-router\angular-ui-router.min.js" />
     <Content Include="assets\lib\angular\angular.min.js" />

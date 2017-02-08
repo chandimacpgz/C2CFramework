@@ -1,10 +1,17 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-	<meta charset="utf-8" />
-</head>
-<body>
-
-</body>
-</html>
+﻿<md-toolbar md-scroll-shrink class="md-hue-2">
+    <h2 class="md-toolbar-tools">Cash to Cheque Dashboard</h2>
+</md-toolbar>
+<span><br /><br /></span>
+<div>
+    <md-container>
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToIndexProfile()">Profile and Leave</md-button>
+            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToBalances()">Balances</md-button>
+            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToLeave()">Activities</md-button>
+            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToLeaveForm()">Leave Form</md-button>
+            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToRules()">Rule Engine</md-button>
+            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToSetApprovers()">Approvers</md-button>
+            <md-button flex class="md-raised md-primary md-hue-2" ng-click="goToLeaveRequest()">Leave Request</md-button>
+        </section>
+    </md-container>
+</div>

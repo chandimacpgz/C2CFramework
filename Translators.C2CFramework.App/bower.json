@@ -31,11 +31,11 @@
           "angular-animate": "bower_componets/angular-animate/angular-animate.min.js",
           "angular-resource": "bower_components/angular-resource/angular-resource.min.js",
           "angular-material": [
-            "bower_componets/angular-aria/angular-aria.min.js",
-            "bower_componets/angular-material/angular-material.min.js",
-            "bower_componets/angular-material/angular-material.min.css",
+            "bower_components/angular-material/angular-material.min.js",
+            "bower_components/angular-material/angular-material.min.css",
+            "bower_components/angular-aria/angular-aria.min.js",
             "bower_components/angular-messages/angular-messages.min.js"
-          ],
+          ],  
           "angular-loading-bar": [
             "bower_components/angular-loading-bar/build/loading-bar.min.css",
             "bower_components/angular-loading-bar/build/loading-bar.min.js"
