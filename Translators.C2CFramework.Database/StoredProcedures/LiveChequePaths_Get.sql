@@ -8,6 +8,7 @@ BEGIN
 			[AmountCroppedImagePath],
 			[DateCroppedImagePath],
 			[MICRCroppedImagePath],
+			[PayeeCroppedImagePath],
 			[SignatureCroppedImagePath],
 			[LiveChequeImageFrontPath],
 			[LiveChequeImageBackPath], 

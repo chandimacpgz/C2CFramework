@@ -6,6 +6,7 @@
 	@AmountCroppedImagePath VARCHAR(MAX),
 	@DateCroppedImagePath VARCHAR(MAX),
 	@MICRCroppedImagePath VARCHAR(MAX),
+	@PayeeCroppedImagePath VARCHAR(MAX),
 	@SignatureCroppedImagePath VARCHAR(MAX),
 	@LiveChequeImageFrontPath VARCHAR(MAX),
 	@LiveChequeImageBackPath VARCHAR(MAX)
@@ -22,6 +23,7 @@ BEGIN
 			[AmountCroppedImagePath] = @AmountCroppedImagePath,
 			[DateCroppedImagePath] = @DateCroppedImagePath,
 			[MICRCroppedImagePath] = @MICRCroppedImagePath,
+			[PayeeCroppedImagePath] = @PayeeCroppedImagePath,
 			[SignatureCroppedImagePath] = @SignatureCroppedImagePath,
 			[LiveChequeImageFrontPath] = @LiveChequeImageFrontPath,
 			[LiveChequeImageBackPath] = @LiveChequeImageBackPath,

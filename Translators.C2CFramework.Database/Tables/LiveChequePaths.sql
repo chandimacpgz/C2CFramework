@@ -7,6 +7,7 @@
 	[AmountCroppedImagePath] VARCHAR(MAX) NULL,
 	[DateCroppedImagePath] VARCHAR(MAX) NULL,
 	[MICRCroppedImagePath] VARCHAR(MAX) NULL,
+	[PayeeCroppedImagePath] VARCHAR(MAX) NULL,
 	[SignatureCroppedImagePath] VARCHAR(MAX) NULL,
 	[LiveChequeImageFrontPath] VARCHAR(MAX) NULL,
 	[LiveChequeImageBackPath] VARCHAR(MAX) NULL,
