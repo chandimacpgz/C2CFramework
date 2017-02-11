@@ -14,6 +14,7 @@ namespace Translators.C2CFramework.WebAPI.Models
         public string AmountCroppedImagePath { get; set; }
         public string DateCroppedImagePath { get; set; }
         public string MICRCroppedImagePath { get; set; }
+        public string PayeeCroppedImagePath { get; set; }
         public string SignatureCroppedImagePath { get; set; }
         public string ChequeLogoCroppedImagePath { get; set; }
         public string LiveChequeImageFrontPath { get; set; }

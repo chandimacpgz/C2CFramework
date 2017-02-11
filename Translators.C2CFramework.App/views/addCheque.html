@@ -4,4 +4,18 @@
     </md-toolbar>
     <span><br /><br /></span>
 
+    <form action='#' onsubmit="return false;">
+        <input type='file' id='imgfile' />
+    </form>
+    <md-button md-no-ink ng-disabled="true" class="md-primary"><md-tooltip md-direction="bottom">Select the Signature Region</md-tooltip>Signature</md-button>
+    <md-button md-no-ink ng-disabled="true" class="md-primary"><md-tooltip md-direction="bottom">Select the Numerical Amount Region</md-tooltip>Courtesy Amount</md-button>
+    <md-button md-no-ink ng-disabled="true" class="md-primary"><md-tooltip md-direction="bottom">Select the Written Amount Region</md-tooltip>Legal Amount</md-button>
+    <md-button md-no-ink ng-disabled="true" class="md-primary"><md-tooltip md-direction="bottom">Select the Date Region</md-tooltip>Date</md-button>
+    <md-button md-no-ink ng-disabled="true" class="md-primary"><md-tooltip md-direction="bottom">Select the MICR Numbers Region</md-tooltip>MICR</md-button>
+    <md-button md-no-ink ng-disabled="true" class="md-primary"><md-tooltip md-direction="bottom">Select the Payee Region</md-tooltip>Payee</md-button>
+
+    <div id="canvasDiv">
+        <canvas id="canvas"></canvas>
+    </div>
+
 </div>
