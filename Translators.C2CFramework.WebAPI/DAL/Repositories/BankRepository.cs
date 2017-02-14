@@ -38,7 +38,8 @@ namespace Translators.C2CFramework.WebAPI.DAL.Repositories
             int rowsAffected = this._db.Execute("Banks_Add",
                 new
                 {
-                    Name = bank.Name
+                    Name = bank.Name,
+                    Email = bank.Email
                 }, commandType: CommandType.StoredProcedure);
 
             if (rowsAffected > 0)
@@ -68,7 +69,8 @@ namespace Translators.C2CFramework.WebAPI.DAL.Repositories
                 new
                 {
                     Id = bank.Id,
-                    Name = bank.Name
+                    Name = bank.Name,
+                    Email = bank.Email
                 }, commandType: CommandType.StoredProcedure);
 
             if (rowsAffected > 0)

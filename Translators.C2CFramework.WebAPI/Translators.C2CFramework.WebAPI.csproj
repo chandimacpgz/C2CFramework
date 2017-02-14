@@ -99,9 +99,6 @@
   <ItemGroup>
     <Content Include="ChequeImageData\ArchievedCheques\cheque_sample - Copy.jpg" />
     <Content Include="ChequeImageData\ArchievedCheques\cheque_sample.jpg" />
-    <Content Include="ChequeImageData\ArchievedCheques\cheque_sample123.jpg" />
-    <Content Include="ChequeImageData\CroppedCheques\NumericalAmount\NumericalAmount_217.jpg" />
-    <Content Include="ChequeImageData\CroppedCheques\NumericalAmount\NumericalAmount_38942.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -150,8 +147,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="ChequeImageData\CroppedCheques\Amount\" />
     <Folder Include="ChequeImageData\CroppedCheques\Date\" />
-    <Folder Include="ChequeImageData\CroppedCheques\Logo\" />
     <Folder Include="ChequeImageData\CroppedCheques\MICR\" />
+    <Folder Include="ChequeImageData\CroppedCheques\NumericalAmount\" />
+    <Folder Include="ChequeImageData\CroppedCheques\Payee\" />
     <Folder Include="ChequeImageData\CroppedCheques\Signature\" />
   </ItemGroup>
   <PropertyGroup>

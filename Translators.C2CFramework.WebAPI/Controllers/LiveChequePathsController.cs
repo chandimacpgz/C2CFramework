@@ -38,6 +38,7 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         [HttpPost]
         public bool Post([FromBody]LiveChequePath liveChequePath)
         {
+            Dictionary<string, string> pathList = new Dictionary<string, string>();
             CropPointsController loadCropPoints = new CropPointsController();
             CropPoint cropPointData = new CropPoint();
             LiveChequeCrop liveChequeCrop = new LiveChequeCrop();
@@ -49,9 +50,31 @@ namespace Translators.C2CFramework.WebAPI.Controllers
             {
                 cropPointData.CropType = CropId;
                 CropPoint CropPoints = loadCropPoints.GetByCropType(cropPointData);
-                liveChequeCrop.SaveCroppedImage(liveChequePath.LiveChequeImageFrontPath, CropId,CropPoints);
-            }
+                pathList.Add(cropPointData.CropType.ToString(), liveChequeCrop.SaveCroppedImage(liveChequePath.LiveChequeImageFrontPath, CropId, CropPoints));
 
+                switch (CropId)
+                {
+                    case CropType.NumericalAmount:
+                        liveChequePath.NumericalAmountCroppedImagePath = pathList["NumericalAmount"];
+                        break;
+                    case CropType.Amount:
+                        liveChequePath.AmountCroppedImagePath = pathList["Amount"];
+                        break;
+                    case CropType.Date:
+                        liveChequePath.DateCroppedImagePath = pathList["Date"];
+                        break;
+                    case CropType.MICR:
+                        liveChequePath.MICRCroppedImagePath = pathList["MICR"];
+                        break;
+                    case CropType.Payee:
+                        liveChequePath.PayeeCroppedImagePath = pathList["Payee"];
+                        break;
+                    case CropType.Signature:
+                        liveChequePath.SignatureCroppedImagePath = pathList["Signature"];
+                        break;
+                }
+            }
+            
             return _liveChequePathRepository.InsertLiveChequePath(liveChequePath);
         }
 

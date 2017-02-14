@@ -14,7 +14,6 @@ namespace Translators.C2CFramework.WebAPI.ChequeCrop
             CropType.Amount,
             CropType.Date,
             CropType.Signature,
-            CropType.Logo,
             CropType.MICR,
             CropType.Payee
         };

@@ -11,8 +11,7 @@ namespace Translators.C2CFramework.WebAPI.Enum
         Amount = 1,
         Date = 2,
         Signature = 3,
-        Logo = 4,
-        MICR = 5,
-        Payee = 6
+        MICR = 4,
+        Payee = 5
     }
 }

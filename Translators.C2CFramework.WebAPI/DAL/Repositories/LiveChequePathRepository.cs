@@ -51,14 +51,14 @@ namespace Translators.C2CFramework.WebAPI.DAL.Repositories
             int rowsAffected = this._db.Execute("LiveChequePaths_Add",
                 new
                 {
-                    Name = liveChequePath.BankId,
+                    BankId = liveChequePath.BankId,
+                    ChequeId = liveChequePath.ChequeId,
                     NumericalAmountCroppedImagePath = liveChequePath.NumericalAmountCroppedImagePath,
                     AmountCroppedImagePath = liveChequePath.AmountCroppedImagePath,
                     DateCroppedImagePath = liveChequePath.DateCroppedImagePath,
                     MICRCroppedImagePath = liveChequePath.MICRCroppedImagePath,
                     PayeeCroppedImagePath = liveChequePath.PayeeCroppedImagePath,
                     SignatureCroppedImagePath = liveChequePath.SignatureCroppedImagePath,
-                    ChequeLogoCroppedImagePath = liveChequePath.ChequeLogoCroppedImagePath,
                     LiveChequeImageFrontPath = liveChequePath.LiveChequeImageFrontPath,
                     LiveChequeImageBackPath = liveChequePath.LiveChequeImageBackPath
                 }, commandType: CommandType.StoredProcedure);
@@ -77,14 +77,14 @@ namespace Translators.C2CFramework.WebAPI.DAL.Repositories
                    new
                    {
                        Id = liveChequePath.Id,
-                       Name = liveChequePath.BankId,
+                       BankId = liveChequePath.BankId,
+                       ChequeId = liveChequePath.ChequeId,
                        NumericalAmountCroppedImagePath = liveChequePath.NumericalAmountCroppedImagePath,
                        AmountCroppedImagePath = liveChequePath.AmountCroppedImagePath,
                        DateCroppedImagePath = liveChequePath.DateCroppedImagePath,
                        MICRCroppedImagePath = liveChequePath.MICRCroppedImagePath,
                        PayeeCroppedImagePath = liveChequePath.PayeeCroppedImagePath,
                        SignatureCroppedImagePath = liveChequePath.SignatureCroppedImagePath,
-                       ChequeLogoCroppedImagePath = liveChequePath.ChequeLogoCroppedImagePath,
                        LiveChequeImageFrontPath = liveChequePath.LiveChequeImageFrontPath,
                        LiveChequeImageBackPath = liveChequePath.LiveChequeImageBackPath
                    }, commandType: CommandType.StoredProcedure);
