@@ -1,0 +1,22 @@
+﻿<div>
+    <md-toolbar md-scroll-shrink class="md-hue-2">
+        <h2 class="md-toolbar-tools">Add Bank</h2>
+    </md-toolbar>
+    <span><br /><br /></span>
+
+    <form ng-submit="addBank()">
+            <div>
+                <md-input-container>
+                    <label>Bank Name</label>
+                    <input ng-model="bank.name">
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="bank.email" type="email">
+                </md-input-container>
+            </div>
+        <md-button type="submit" class="md-raised md-primary">Submit</md-button>
+    </form>
+
+</div>

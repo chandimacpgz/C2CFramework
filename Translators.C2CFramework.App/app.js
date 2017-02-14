@@ -2,6 +2,10 @@
   'ui.router', 'ngMaterial', 'ngMessages', 'cfp.loadingBar'
 ]);
 
+app.constant('endPoints', {
+    webApi: 'http://localhost:59056/'
+});
+
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/home");
     $stateProvider
@@ -17,6 +21,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'views/home.html',
             controller: 'homeController'
         })
+        .state('addBank',
+        {
+            url: "/addBank",
+            templateUrl: 'views/addBank.html',
+            controller: 'addBankController'
+        })
         .state('addCheque',
         {
             url: "/addCheque",
@@ -29,6 +39,9 @@ app.controller('navBarController', function ($scope,$state) {
 
     $scope.goToHome = function () {
         $state.go('home');
+    };
+    $scope.goToAddBank = function () {
+        $state.go('addBank');
     };
     $scope.goToAddCheque = function () {
         $state.go('addCheque');

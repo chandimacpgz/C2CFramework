@@ -4,6 +4,7 @@
     <title>Cheque to Cash App</title>
 	<meta charset="utf-8" />
 
+    <!--style:css-->
     <link href="assets/lib/angular-loading-bar/loading-bar.min.css" rel="stylesheet" />
     <link href="assets/lib/angular-material/angular-material.min.css" rel="stylesheet" />
 
@@ -14,17 +15,19 @@
     <script src="assets/lib/angular-ui-router/angular-ui-router.min.js"></script>
     <script src="assets/lib/angular-resource/angular-resource.min.js"></script>
     <script src="assets/lib/angular-material/angular-material.min.js"></script>
-
-
     <script src="assets/lib/angular-material/angular-aria.min.js"></script>
     <script src="assets/lib/angular-material/angular-messages.min.js"></script>
-
     <script src="assets/lib/angular-loading-bar/loading-bar.min.js"></script>
 
     <!--controller:js-->
     <script src="app.js"></script>
     <script src="controllers/homeController.js"></script>
     <script src="controllers/addChequeController.js"></script>
+    <script src="controllers/addBankController.js"></script>
+
+    <!--service:js-->
+    <script src="services/bankService.js"></script>
+
 </head>
 <body  ng-app="chequeApp">
     <md-toolbar class="md-primary">
@@ -36,13 +39,16 @@
         <md-content class="md-padding">
             <md-nav-bar md-selected-nav-item="currentNavItem"
                         nav-bar-aria-label="navigation links">
-                <md-nav-item md-nav-click="goToHome()" name="page1">
+                <md-nav-item md-nav-click="goToHome()" name="Home">
                     Home
                 </md-nav-item>
-                <md-nav-item md-nav-click="goToAddCheque()" name="page2">
+                <md-nav-item md-nav-click="goToAddBank()" name="Bank">
+                    Add Bank
+                </md-nav-item>
+                <md-nav-item md-nav-click="goToAddCheque()" name="Cheque">
                     Add Cheque
                 </md-nav-item>
-                <md-nav-item md-nav-click="goto('page3')" name="page3">
+                <md-nav-item md-nav-click="goto('page3')" name="About Us">
                     About Us
                 </md-nav-item>
             </md-nav-bar>

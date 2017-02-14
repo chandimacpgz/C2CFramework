@@ -9,6 +9,9 @@
         $scope.goToHome = function () {
             $state.go('home');
         };
+        $scope.goToAddBank = function () {
+            $state.go('addBank');
+        };
         $scope.goToAddCheque = function () {
             $state.go('addCheque');
         };
