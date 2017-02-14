@@ -78,10 +78,8 @@
     <Content Include="assets\lib\angular-ui-router\angular-ui-router.min.js" />
     <Content Include="assets\lib\angular\angular.min.js" />
     <Content Include="assets\lib\jquery\jquery.min.js" />
-    <Content Include="controllers\addBankController.js" />
-    <Content Include="controllers\addChequeController.js" />
-    <Content Include="controllers\dashboardController.js" />
-    <Content Include="controllers\homeController.js" />
+    <Content Include="controllers\bankController.js" />
+    <Content Include="controllers\chequeController.js" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="bower.json" />

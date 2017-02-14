@@ -2,10 +2,10 @@
     'use strict';
     angular
         .module('chequeApp')
-        .controller('addBankController', addBankController);
+        .controller('bankController', bankController);
 
-    addBankController.$inject = ['$location', '$scope', '$state', '$element', 'BankService'];
-    function addBankController($location, $scope, $state, $element, BankService) {
+    bankController.$inject = ['$location', '$scope', '$state', '$element', 'BankService'];
+    function bankController($location, $scope, $state, $element, BankService) {
         BankService.getBanks().then(function (state) {
             $scope.banks = state.data;
         });
