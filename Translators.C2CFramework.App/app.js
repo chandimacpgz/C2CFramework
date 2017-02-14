@@ -3,7 +3,7 @@
 ]);
 
 app.constant('endPoints', {
-    webApi: 'http://localhost:59056/'
+    webApi: 'http://translatorsapi.azurewebsites.net/'
 });
 
 app.config(function ($stateProvider, $urlRouterProvider) {
