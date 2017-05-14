@@ -1,0 +1,17 @@
+﻿canvas {
+    border: 1px solid black
+}
+
+#canvasDiv {
+    width: 2000px;
+    height: 2000px;
+    border: 10px solid transparent;
+}
+
+.rectangle {
+    border: 1px solid #FF0000;
+    position: absolute;
+    z-index: +1;
+    fill: blue;
+    opacity: 0.5;
+}

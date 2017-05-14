@@ -1,0 +1,45 @@
+﻿<md-dialog aria-label="Cheque Details">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Cheque Details</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div>
+                <md-select ng-model="signaturecrop.bankid" placeholder="Banks" class="md-no-underline">
+                    <md-option ng-repeat="bank in banks" value="{{bank.id}}">{{bank.name}}</md-option>
+                </md-select>
+
+                <md-input-container>
+                    <label>Cheque Name</label>
+                    <input ng-model="signaturecrop.name" type="text">
+                </md-input-container>
+                <br />
+                <md-button class="button" ngf-select ng-model="chequeimage" name="file" ngf-pattern="'image/*'"
+                     ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                     ngf-resize="{width: 300, height: 300}">
+                    Select
+                </md-button>
+
+                <!--<img ngf-thumbnail="file || '/img/icons/ic_close_24px.svg'">-->
+
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="cancel()">
+                Cancel
+            </md-button>
+            <md-button ng-click="next(chequeimage)">
+                Next
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

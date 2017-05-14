@@ -4,17 +4,21 @@
         .module('chequeApp')
         .controller('bankController', bankController);
 
-    bankController.$inject = ['$location', '$scope', '$state', '$element', 'BankService'];
-    function bankController($location, $scope, $state, $element, BankService) {
+    bankController.$inject = ['$location', '$scope', '$state', '$element', 'BankService', 'cfpLoadingBar'];
+    function bankController($location, $scope, $state, $element, BankService, cfpLoadingBar) {
+        cfpLoadingBar.start();
         BankService.getBanks().then(function (state) {
-            $scope.banks = state.data;
+            cfpLoadingBar.complete();
+            $scope.banks = state;
         });
 
         $scope.addBank = function () {
             BankService.addBank($scope.bank).then(function (state) {
                 $scope.result = state.data;
-                $location.path('/addBank');
+                $state.reload();
             });
         }
+
+
     }
 })();

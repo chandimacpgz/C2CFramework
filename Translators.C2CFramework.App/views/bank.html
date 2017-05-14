@@ -1,0 +1,47 @@
+﻿<div>
+    <md-toolbar md-scroll-shrink class="md-hue-2">
+        <h2 class="md-toolbar-tools">Add Bank</h2>
+    </md-toolbar>
+    <span><br /><br /></span>
+
+    <form ng-submit="addBank()">
+            <div>
+                <md-input-container>
+                    <label>Bank Name</label>
+                    <input ng-model="bank.name">
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="bank.email" type="email">
+                </md-input-container>
+            </div>
+        <md-button type="submit" class="md-raised md-primary">Submit</md-button>
+    </form>
+    <br /><br />
+    <md-toolbar md-scroll-shrink class="md-hue-2">
+        <h2 class="md-toolbar-tools">Banks Details</h2>
+    </md-toolbar>
+
+    <md-table-container>
+        <table md-table>
+            <thead md-head>
+                <tr md-row>
+                    <th md-column md-numeric>Name</th>
+                    <th md-column md-numeric>Email</th>
+                    <th md-column md-numeric>Created Date</th>
+                    <th md-column md-numeric>Modified Date</th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                <tr md-row ng-repeat="bank in banks">
+                    <td md-cell>{{bank.name}}</td>
+                    <td md-cell>{{bank.email}}</td>
+                    <td md-cell>{{bank.createdDate}}</td>
+                    <td md-cell>{{bank.updatedDate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+
+</div>

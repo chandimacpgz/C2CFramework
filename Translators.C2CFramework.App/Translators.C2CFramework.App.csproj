@@ -66,10 +66,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app.css" />
     <Content Include="app.js" />
     <Content Include="assets\lib\angular-animate\angular-animate.min.js" />
     <Content Include="assets\lib\angular-loading-bar\loading-bar.min.css" />
     <Content Include="assets\lib\angular-loading-bar\loading-bar.min.js" />
+    <Content Include="assets\lib\angular-material-data-table\md-data-table.min.css" />
+    <Content Include="assets\lib\angular-material-data-table\md-data-table.min.js" />
     <Content Include="assets\lib\angular-material\angular-aria.min.js" />
     <Content Include="assets\lib\angular-material\angular-material.min.css" />
     <Content Include="assets\lib\angular-material\angular-material.min.js" />
@@ -78,8 +81,12 @@
     <Content Include="assets\lib\angular-ui-router\angular-ui-router.min.js" />
     <Content Include="assets\lib\angular\angular.min.js" />
     <Content Include="assets\lib\jquery\jquery.min.js" />
+    <Content Include="assets\lib\ng-file-upload\ng-file-upload-all.min.js" />
+    <Content Include="assets\lib\ng-file-upload\ng-file-upload-shim.min.js" />
+    <Content Include="assets\lib\ng-file-upload\ng-file-upload.min.js" />
     <Content Include="controllers\bankController.js" />
     <Content Include="controllers\chequeController.js" />
+    <Content Include="img\icons\ic_close_24px.svg" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="bower.json" />
@@ -95,8 +102,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="services\bankService.js" />
-    <Content Include="views\addBank.html" />
-    <Content Include="views\addCheque.html" />
+    <Content Include="services\chequeService.js" />
+    <Content Include="views\bank.html" />
+    <Content Include="views\basicCheque.html" />
+    <Content Include="views\cheque.html" />
     <Content Include="views\dashboard.html" />
     <Content Include="views\home.html" />
     <Content Include="Web.config" />
