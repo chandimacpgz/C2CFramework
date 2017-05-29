@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -85,6 +86,15 @@ namespace Translators.C2CFramework.WebAPI.DAL.Repositories
             }
 
             return false;
+        }
+
+        public Cheque GetChequeDataByChequePath(string path)
+        {
+            return _db.Query<Cheque>("Cheques_GetByChequePath",
+                new
+                {
+                    ArchievedChequeFrontPath = path
+                }, commandType: CommandType.StoredProcedure).SingleOrDefault();
         }
     }
 }

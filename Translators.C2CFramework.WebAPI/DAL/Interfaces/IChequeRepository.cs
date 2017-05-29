@@ -11,6 +11,7 @@ namespace Translators.C2CFramework.WebAPI.DAL.Interfaces
     {
         List<Cheque> GetCheques();
         Cheque GetSingleCheque(int id);
+        Cheque GetChequeDataByChequePath(string path);
         bool InsertCheque(Cheque cheque);
         bool DeleteCheque(int id);
         bool UpdateCheque(Cheque cheque);

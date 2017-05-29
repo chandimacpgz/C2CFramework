@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -108,8 +109,14 @@
     <Compile Include="ChequeCrop\CropTypeFactory.cs" />
     <Compile Include="ChequeCrop\ICropType.cs" />
     <Compile Include="ChequeCrop\LiveChequeCrop.cs" />
+    <Compile Include="ChequeMatch\ChequeProcess.cs" />
+    <Compile Include="ChequeMatch\ComparableImage.cs" />
+    <Compile Include="ChequeMatch\ImageUtility.cs" />
+    <Compile Include="ChequeMatch\RgbProjections.cs" />
+    <Compile Include="ChequeMatch\SimilarityImages.cs" />
     <Compile Include="Controllers\ATMsController.cs" />
     <Compile Include="Controllers\BanksController.cs" />
+    <Compile Include="Controllers\ChequeDetectionController.cs" />
     <Compile Include="Controllers\ChequesController.cs" />
     <Compile Include="Controllers\CropPointsController.cs" />
     <Compile Include="Controllers\LiveChequePathsController.cs" />
