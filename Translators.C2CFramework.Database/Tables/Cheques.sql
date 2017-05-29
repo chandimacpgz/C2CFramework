@@ -4,7 +4,7 @@
 	[Name] NVARCHAR(2048) NOT NULL,
 	[BankId] INT NOT NULL,
 	[ArchievedChequeFrontPath] VARCHAR(MAX) NOT NULL,
-	[ArchievedChequeBackPath] VARCHAR(MAX) NOT NULL,
+	[ArchievedChequeBackPath] VARCHAR(MAX) NULL,
 	[DimensionX] INT NULL,
 	[DimensionY] INT NULL,
 	[CreatedDate] DATETIME NULL,

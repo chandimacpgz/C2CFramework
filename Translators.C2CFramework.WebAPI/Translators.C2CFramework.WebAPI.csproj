@@ -101,6 +101,8 @@
     <Content Include="ChequeImageData\ArchievedCheques\cheque_sample - Copy.jpg" />
     <Content Include="ChequeImageData\ArchievedCheques\cheque_sample.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="LiveChequeImageData\1PeoplesBank_LK.jpg" />
+    <Content Include="LiveChequeImageData\PeoplesBank_LK.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
