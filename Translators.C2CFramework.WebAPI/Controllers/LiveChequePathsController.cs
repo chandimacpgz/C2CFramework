@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using Translators.C2CFramework.WebAPI.ChequeCrop;
 using Translators.C2CFramework.WebAPI.DAL.Repositories;
@@ -18,6 +20,17 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         public LiveChequePathsController()
         {
             _liveChequePathRepository = new LiveChequePathRepository();
+        }
+
+        [Route("LiveChequeImageName")]
+        [HttpGet]
+        public string GetImageName()
+        {
+            var directory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/LiveChequeImageData/"));
+            var myFile = (from f in directory.GetFiles()
+                          orderby f.LastWriteTime descending
+                          select f).First();
+            return myFile.ToString();
         }
 
         [Route("LiveChequePaths")]

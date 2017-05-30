@@ -21,7 +21,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('home',
         {
             url: "/home",
-            templateUrl: 'views/home.html'
+            templateUrl: 'views/home.html',
+            controller: 'homeController'
         })
         .state('bank',
         {
@@ -102,13 +103,13 @@ app.controller('navBarController', function ($scope, $state, $mdDialog) {
 
 app.config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-        .primaryPalette('indigo', {
+        .primaryPalette('teal', {
             'default': '400',
             'hue-1': '100',
             'hue-2': '600',
             'hue-3': 'A100'
         })
-        .accentPalette('purple', {
+        .accentPalette('cyan', {
             'default': '200'
         });
 });

@@ -4,9 +4,8 @@ using System.IO;
 
 namespace Translators.C2CFramework.WebAPI.ChequeMatch
 {
-    /// <summary>
-    /// Represents an image and its RGB projections.
-    /// </summary>
+
+    // Represents an image and its RGB projections.
     public class ComparableImage
     {
         private readonly FileInfo file;

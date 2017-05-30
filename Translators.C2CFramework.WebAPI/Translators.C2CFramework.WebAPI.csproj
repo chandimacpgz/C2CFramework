@@ -156,12 +156,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="BackupLiveCheques\" />
     <Folder Include="ChequeImageData\CroppedCheques\Amount\" />
     <Folder Include="ChequeImageData\CroppedCheques\Date\" />
     <Folder Include="ChequeImageData\CroppedCheques\MICR\" />
     <Folder Include="ChequeImageData\CroppedCheques\NumericalAmount\" />
     <Folder Include="ChequeImageData\CroppedCheques\Payee\" />
     <Folder Include="ChequeImageData\CroppedCheques\Signature\" />
+    <Folder Include="NetworkModels\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

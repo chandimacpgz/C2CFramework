@@ -3,5 +3,9 @@
     <h2 class="md-toolbar-tools">Cheque Interface</h2>
 </md-toolbar>
 <span><br /><br /></span>
-
+    <!--<image ng-src="http://i.stack.imgur.com/{{imageName}}" />-->
+    <image ng-src="http://localhost:59056/LiveChequeImageData/1PeoplesBank_LK.jpg" />
+    <md-progress-circular md-mode="indeterminate" md-diameter="96" ng-show="showSpinner"></md-progress-circular>
+    <md-content class="loading" ng-show="showSpinner">Cheque Detecting</md-content>
 </div>
+

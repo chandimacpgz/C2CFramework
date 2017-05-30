@@ -4,18 +4,9 @@ using System.Drawing.Imaging;
 
 namespace Translators.C2CFramework.WebAPI.ChequeMatch
 {
-    /// <summary>
-    /// An utility class to do simple image processing.
-    /// </summary>
+    // An utility class to do simple image processing.
     public static class ImageUtility
     {
-        /// <summary>
-        /// Resize an image in high resolution
-        /// </summary>
-        /// <param name="bitmap">The image to resize.</param>
-        /// <param name="width">The expected width.</param>
-        /// <param name="height">the expected height.</param>
-        /// <returns></returns>
         public static Bitmap ResizeBitmap(Bitmap bitmap, int width, int height)
         {
             var result = new Bitmap(width, height);
@@ -27,12 +18,7 @@ namespace Translators.C2CFramework.WebAPI.ChequeMatch
 
             return result;
         }
-
-        /// <summary>
-        /// Calculate the RBG projection.
-        /// </summary>
-        /// <param name="bitmap">The image to process.</param>
-        /// <returns>Return horizontal RGB projection in value [0] and vertical RGB projection in value [1].</returns>
+        
         public static double[][] GetRgbProjections(Bitmap bitmap)
         {
             var width = bitmap.Width - 1;
@@ -81,11 +67,6 @@ namespace Translators.C2CFramework.WebAPI.ChequeMatch
             return projections;
         }
 
-        /// <summary>
-        /// Optimize the range of values.
-        /// </summary>
-        /// <param name="projection">The array to process.</param>
-        /// <param name="max">The max value for the elements.</param>
         private static void MaximizeScale(ref double[] projection, double max)
         {
             var minValue = double.MaxValue;
