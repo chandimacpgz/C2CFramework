@@ -34,7 +34,7 @@ namespace Translators.C2CFramework.WebAPI.DAL.Repositories
 
         public bool InsertCheque(Cheque cheque)
         {
-            int rowsAffected = this._db.Execute("Cheque_Add",
+            int rowsAffected = this._db.Execute("Cheques_Add",
                 new
                 {
                     Name = cheque.Name,

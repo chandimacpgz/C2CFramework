@@ -12,21 +12,26 @@
 
         <md-dialog-content>
             <div>
-                <md-select ng-model="signaturecrop.bankid" placeholder="Banks" class="md-no-underline">
+                <md-select ng-model="cheque.bankid" placeholder="Banks" class="md-no-underline">
                     <md-option ng-repeat="bank in banks" value="{{bank.id}}">{{bank.name}}</md-option>
                 </md-select>
 
                 <md-input-container>
                     <label>Cheque Name</label>
-                    <input ng-model="signaturecrop.name" type="text">
+                    <input ng-model="cheque.name" type="text">
                 </md-input-container>
                 <br />
-                <md-button class="button" ngf-select ng-model="chequeimage" name="file" ngf-pattern="'image/*'"
+                <!--<md-button class="button" ngf-select ng-model="chequeimage" name="file" ngf-pattern="'image/*'"
                      ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
                      ngf-resize="{width: 300, height: 300}">
                     Select
-                </md-button>
-
+                </md-button>-->
+                <!--<div class="button" ngf-select ng-model="file" ngf-multiple="false">Select File</div>-->
+                <div ngf-drop ngf-select ng-model="files" class="drop-box"
+                     ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                     accept="image/*,application/pdf"
+                     ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
+                <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
                 <!--<img ngf-thumbnail="file || '/img/icons/ic_close_24px.svg'">-->
 
             </div>

@@ -3,8 +3,8 @@
 ]);
 
 app.constant('endPoints', {
-    //webApi: 'http://localhost:59056/'
-    webApi: 'http://translatorsapi.azurewebsites.net/'
+    webApi: 'http://localhost:59056/'
+    //webApi: 'http://translatorsapi.azurewebsites.net/'
 
 
 });
@@ -66,7 +66,7 @@ app.controller('navBarController', function ($scope, $state, $mdDialog) {
             });
     };
 
-    function DialogController($scope, $mdDialog, BankService, Upload) {
+    function DialogController($scope, $mdDialog, BankService, Upload, endPoints) {
         BankService.getBanks().then(function (state) {
             $scope.banks = state;
         });
@@ -76,29 +76,37 @@ app.controller('navBarController', function ($scope, $state, $mdDialog) {
             $mdDialog.hide();
         };
 
-        if ($scope.chequeImage) {
-            $scope.upload($scope.chequeImage);
-        }
-
-        $scope.next = function (file) {
-            Upload.upload({
-                url: 'http://translatorsapi.azurewebsites.net/cheques',
-                data: { file: file, 'bankId': $scope.signaturecrop.bankid, 'name': $scope.signaturecrop.name }
-            }).then(function (resp) {
-                console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-            }, function (resp) {
-                console.log('Error status: ' + resp.status);
-            }, function (evt) {
-                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+        //if ($scope.chequeImage) {
+        //    $scope.upload($scope.chequeImage);
+        //}
+        
+        $scope.next = function () {
+            var file = $scope.files
+            file.upload = Upload.http({
+                url: endPoints.webApi + 'chequesAdd',
+                data: { name: $scope.cheque.name, bankId: $scope.cheque.bankid },
+                file: file 
             });
 
+                file.upload.then(function (response) {
+                    $timeout(function () {
+                        file.result = response.data;
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    // Math.min is to fix IE which reports 200% sometimes
+                    file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                });
+            
+        
 
-            $state.go('cheque');
-            $mdDialog.hide();
+
+        $state.go('cheque');
+        $mdDialog.hide();
         };
-    }
-
+    };
 });
 
 app.config(function ($mdThemingProvider) {

@@ -56,7 +56,7 @@
         });
 
         var canvas = document.getElementById('canvas');
-        if (canvas.width != 0) {
+        if (canvas.width !== 0) {
             
         }
 
@@ -106,7 +106,7 @@
                 canvas.onclick = function (e) {
                     if (element !== null) {
                         
-                        if (confirm("Press a button!") == true) {
+                        if (confirm("Press a button!") === true) {
                             console.log('left= ' + cropPoint[0] + ' top= ' + cropPoint[1]);
                             console.log('width= ' + cropPoint[2] + ' height= ' + cropPoint[3]);
                             $scope.signaturecrop.cropType = 'Signature';

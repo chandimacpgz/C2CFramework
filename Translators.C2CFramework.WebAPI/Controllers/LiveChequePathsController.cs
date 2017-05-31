@@ -26,11 +26,33 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         [HttpGet]
         public string GetImageName()
         {
+            var path = HttpContext.Current.Server.MapPath("~/LiveChequeImageData/");
             var directory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/LiveChequeImageData/"));
-            var myFile = (from f in directory.GetFiles()
-                          orderby f.LastWriteTime descending
-                          select f).First();
-            return myFile.ToString();
+            //var myFile = (from f in directory.GetFiles()
+            //              orderby f.LastWriteTime descending
+            //              select f).First();
+            if(Directory.EnumerateFiles(path).Any())
+            {
+                var myFile = (from f in directory.GetFiles()
+                              orderby f.LastWriteTime descending
+                              select f).First();
+                return myFile.ToString();
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
+
+        [Route("DeleteLiveChequeImage")]
+        [HttpGet]
+        public string DeleteLiveChequeImage(string ChequeName)
+        {
+            var path = HttpContext.Current.Server.MapPath("~/LiveChequeImageData/");
+            System.IO.File.Delete(path + ChequeName);
+            return "done";
+
         }
 
         [Route("LiveChequePaths")]
@@ -49,7 +71,7 @@ namespace Translators.C2CFramework.WebAPI.Controllers
 
         [Route("LiveChequePaths")]
         [HttpPost]
-        public bool Post([FromBody]LiveChequePath liveChequePath)
+        public LiveChequePath Post([FromBody]LiveChequePath liveChequePath)
         {
             Dictionary<string, string> pathList = new Dictionary<string, string>();
             CropPointsController loadCropPoints = new CropPointsController();
@@ -87,13 +109,17 @@ namespace Translators.C2CFramework.WebAPI.Controllers
                         break;
                 }
             }
-            
+
+            //delete LiveCheque
+            //var path = HttpContext.Current.Server.MapPath("~/LiveChequeImageData/");
+            //string deletePath = path + Path.GetFileName(liveChequePath.LiveChequeImageFrontPath);
+            //File.Delete(deletePath);
             return _liveChequePathRepository.InsertLiveChequePath(liveChequePath);
         }
 
         [Route("LiveChequePaths")]
         [HttpPut]
-        public bool Put([FromBody]LiveChequePath liveChequePath)
+        public LiveChequePath Put([FromBody]LiveChequePath liveChequePath)
         {
             return _liveChequePathRepository.UpdateLiveChequePath(liveChequePath);
         }

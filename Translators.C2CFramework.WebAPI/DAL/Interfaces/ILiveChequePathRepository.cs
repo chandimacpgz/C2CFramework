@@ -11,8 +11,8 @@ namespace Translators.C2CFramework.WebAPI.DAL.Interfaces
     {
         List<LiveChequePath> GetLiveChequePaths();
         LiveChequePath GetSingleLiveChequePath(int id);
-        bool InsertLiveChequePath(LiveChequePath liveChequePath);
+        LiveChequePath InsertLiveChequePath(LiveChequePath liveChequePath);
         bool DeleteLiveChequePath(int id);
-        bool UpdateLiveChequePath(LiveChequePath liveChequePath);
+        LiveChequePath UpdateLiveChequePath(LiveChequePath liveChequePath);
     }
 }

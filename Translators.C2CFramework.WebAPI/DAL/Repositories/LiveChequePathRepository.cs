@@ -46,7 +46,7 @@ namespace Translators.C2CFramework.WebAPI.DAL.Repositories
                 }, commandType: CommandType.StoredProcedure).SingleOrDefault();
         }
 
-        public bool InsertLiveChequePath(LiveChequePath liveChequePath)
+        public LiveChequePath InsertLiveChequePath(LiveChequePath liveChequePath)
         {
             int rowsAffected = this._db.Execute("LiveChequePaths_Add",
                 new
@@ -65,13 +65,13 @@ namespace Translators.C2CFramework.WebAPI.DAL.Repositories
 
             if (rowsAffected > 0)
             {
-                return true;
+                return liveChequePath;
             }
 
-            return false;
+            return liveChequePath;
         }
 
-        public bool UpdateLiveChequePath(LiveChequePath liveChequePath)
+        public LiveChequePath UpdateLiveChequePath(LiveChequePath liveChequePath)
         {
             int rowsAffected = this._db.Execute("LiveChequePaths_Update",
                    new
@@ -91,10 +91,10 @@ namespace Translators.C2CFramework.WebAPI.DAL.Repositories
 
             if (rowsAffected > 0)
             {
-                return true;
+                return liveChequePath;
             }
 
-            return false;
+            return liveChequePath;
         }
     }
 }
