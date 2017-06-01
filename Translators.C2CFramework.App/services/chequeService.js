@@ -6,19 +6,18 @@
     function ChequeService($http, endPoints) {
         var service = {};
 
-        service.addSignature = addSignature;
+        service.addCropPoint = addCropPoint;
         return service;
 
-        function addSignature(signature) {
+        function addCropPoint(cropData) {
             return $http({
                 url: endPoints.webApi + 'cropPoints',
                 method: "POST",
-                data: signature,
+                data: cropData,
                 headers: { 'Content-Type': 'application/json' }
             }).then(handleSuccess, handleError('Error in adding signature'));
 
         }
-
         // custom functions
         function handleSuccess(res) {
             return res.data;

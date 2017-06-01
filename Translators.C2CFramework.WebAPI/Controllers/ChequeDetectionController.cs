@@ -19,16 +19,16 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         public LiveChequePath ChequeDetection(string liveChequePath1)
         {
             #region MATLAB
-            //var signaturePath = HttpContext.Current.Server.MapPath("~/ChequeImageData/CroppedCheques/Signature");
-            //var signatureDirectory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/ChequeImageData/CroppedCheques/Signature"));
-            //var signatureFile = (from f in signatureDirectory.GetFiles()
-            //              orderby f.LastWriteTime descending
-            //              select f).First();
+            var signaturePath = HttpContext.Current.Server.MapPath("~/ChequeImageData/CroppedCheques/Signature");
+            var signatureDirectory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/ChequeImageData/CroppedCheques/Signature"));
+            var signatureFile = (from f in signatureDirectory.GetFiles()
+                                 orderby f.LastWriteTime descending
+                                 select f).First();
 
-            //int id = 2;
-            //var LiveSignaturePath = signaturePath + signatureFile;
-            //Signature sig = new Signature();
-            //MWArray mw = sig.main(LiveSignaturePath, id);
+            int id = 8;
+            var LiveSignaturePath = signaturePath  + "\\" +  signatureFile;
+            Signature sig = new Signature();
+            MWArray mw = sig.main(LiveSignaturePath, id);
             #endregion
             //mycode
             var directory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/LiveChequeImageData/"));

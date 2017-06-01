@@ -94,5 +94,6 @@
     <Build Include="Tables\CropPoints.sql" />
     <Build Include="Tables\LiveChequePaths.sql" />
     <Build Include="StoredProcedures\Cheques_GetByChequePath.sql" />
+    <Build Include="StoredProcedures\Cheques_GetByBankIdFrontPath.sql" />
   </ItemGroup>
 </Project>

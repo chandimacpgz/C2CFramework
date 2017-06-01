@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using Translators.C2CFramework.WebAPI.DAL.Repositories;
@@ -35,22 +38,59 @@ namespace Translators.C2CFramework.WebAPI.Controllers
 
         [Route("Cheques")]
         [HttpPost]
-        public void Post([FromBody]HttpContext context)
+        public async Task<HttpResponseMessage> Post()
         {
-            if (context.Request.Files.Count > 0)
+            string Name = "";
+            int BankId = 0;
+            if (!Request.Content.IsMimeMultipartContent())
             {
-                HttpFileCollection files = context.Request.Files;
-                var userName = context.Request.Form["name"];
-                for (int i = 0; i < files.Count; i++)
-                {
-                    HttpPostedFile file = files[i];
-
-                    string fname = context.Server.MapPath("Uploads\\" + userName.ToUpper() + "\\" + file.FileName);
-                    file.SaveAs(fname);
-                }
+                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
-            context.Response.ContentType = "text/plain";
-            context.Response.Write("File/s uploaded successfully!");
+            string root = HttpContext.Current.Server.MapPath("~/ChequeImageData/ArchievedCheques/");
+            var provider = new MultipartFormDataStreamProvider(root);
+
+            try
+            {
+                await Request.Content.ReadAsMultipartAsync(provider);
+                
+                // Show all the key-value pairs.
+                foreach (var key in provider.FormData.AllKeys)
+                {
+                    foreach (var val in provider.FormData.GetValues(key))
+                    {
+                        if(key == "name")
+                        {
+                            Name = val;
+                        }
+
+                        if(key == "bankId")
+                        {
+                            BankId = Convert.ToInt32(val);
+                        }
+                    }
+                }
+
+                foreach (MultipartFileData file in provider.FileData)
+                {
+                    string des = Path.GetDirectoryName(file.LocalFileName) +"\\"+ Name + ".jpg";
+                    File.Copy(file.LocalFileName, des, true);
+                    File.Delete(file.LocalFileName);
+                }
+                Cheque cheque = new Cheque();
+                cheque.Name = Name;
+                cheque.BankId = BankId;
+                cheque.ArchievedChequeFrontPath = Name + ".jpg";
+                _chequeRepository.InsertCheque(cheque);
+                Cheque cheque1 = new Cheque();
+                cheque1 = _chequeRepository.GetChequeId(cheque.BankId, cheque.ArchievedChequeFrontPath);
+                return Request.CreateResponse(cheque1);
+            }
+            catch (System.Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+            
+
             //return _chequeRepository.InsertCheque(cheque);
         }
 

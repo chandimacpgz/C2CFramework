@@ -1,4 +1,14 @@
-﻿<md-dialog aria-label="Cheque Details">
+﻿<style>
+    drop-box {
+        background: #F8F8F8;
+        border: 5px dashed #DDD;
+        width: 170px;
+        text-align: center;
+        padding: 50px 10px;
+        margin-left: 10px;
+    }
+</style>
+<md-dialog aria-label="Cheque Details">
     <form ng-cloak>
         <md-toolbar>
             <div class="md-toolbar-tools">
@@ -30,7 +40,7 @@
                 <div ngf-drop ngf-select ng-model="files" class="drop-box"
                      ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
                      accept="image/*,application/pdf"
-                     ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
+                     ngf-pattern="'image/*,application/pdf'">Drop or Click to add Cheque</div>
                 <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
                 <!--<img ngf-thumbnail="file || '/img/icons/ic_close_24px.svg'">-->
 

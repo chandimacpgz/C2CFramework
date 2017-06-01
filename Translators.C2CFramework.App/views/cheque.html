@@ -4,12 +4,12 @@
     </md-toolbar>
     <span><br /><br /></span>
 
-    <md-button md-no-ink class="md-primary" ng-disabled="false" ng-click="signature()"><md-tooltip md-direction="bottom" >Select the Signature Region</md-tooltip>Signature</md-button>
-    <md-button md-no-ink class="md-primary" ng-disabled="false" ng-click="courtesyamount()"><md-tooltip md-direction="bottom" >Select the Numerical Amount Region</md-tooltip>Courtesy Amount</md-button>
-    <md-button md-no-ink class="md-primary" ng-disabled="false" ng-click="legalamount()"><md-tooltip md-direction="bottom">Select the Written Amount Region</md-tooltip>Legal Amount</md-button>
-    <md-button md-no-ink class="md-primary" ng-disabled="false" ng-click="date()"><md-tooltip md-direction="bottom">Select the Date Region</md-tooltip>Date</md-button>
-    <md-button md-no-ink class="md-primary" ng-disabled="false" ng-click="micr()"><md-tooltip md-direction="bottom">Select the MICR Numbers Region</md-tooltip>MICR</md-button>
-    <md-button md-no-ink class="md-primary" ng-disabled="false" ng-click="payee()"><md-tooltip md-direction="bottom">Select the Payee Region</md-tooltip>Payee</md-button>
+    <md-button md-no-ink class="md-primary" ng-disabled="showSignature" ng-click="signature()"><md-tooltip md-direction="bottom" >Select the Signature Region</md-tooltip>Signature</md-button>
+    <md-button md-no-ink class="md-primary" ng-disabled="showCourtesyamount" ng-click="courtesyamount()"><md-tooltip md-direction="bottom" >Select the Numerical Amount Region</md-tooltip>Courtesy Amount</md-button>
+    <md-button md-no-ink class="md-primary" ng-disabled="showLegalamount" ng-click="legalamount()"><md-tooltip md-direction="bottom">Select the Written Amount Region</md-tooltip>Legal Amount</md-button>
+    <md-button md-no-ink class="md-primary" ng-disabled="showDate" ng-click="date()"><md-tooltip md-direction="bottom">Select the Date Region</md-tooltip>Date</md-button>
+    <md-button md-no-ink class="md-primary" ng-disabled="showMicr" ng-click="micr()"><md-tooltip md-direction="bottom">Select the MICR Numbers Region</md-tooltip>MICR</md-button>
+    <md-button md-no-ink class="md-primary" ng-disabled="showPayee" ng-click="payee()"><md-tooltip md-direction="bottom">Select the Payee Region</md-tooltip>Payee</md-button>
 
     <div id="canvasDiv">
         <canvas id="canvas"></canvas>

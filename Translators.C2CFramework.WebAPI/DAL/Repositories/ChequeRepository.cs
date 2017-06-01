@@ -32,6 +32,16 @@ namespace Translators.C2CFramework.WebAPI.DAL.Repositories
                 }, commandType: CommandType.StoredProcedure).SingleOrDefault();
         }
 
+        public Cheque GetChequeId(int bankId, string archievedChequeFrontPath)
+        {
+            return _db.Query<Cheque>("Cheques_GetByBankIdFrontPath",
+                new
+                {
+                    BankId = bankId,
+                    ArchievedChequeFrontPath = archievedChequeFrontPath
+                }, commandType: CommandType.StoredProcedure).SingleOrDefault();
+        }
+
         public bool InsertCheque(Cheque cheque)
         {
             int rowsAffected = this._db.Execute("Cheques_Add",
