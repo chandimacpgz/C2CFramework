@@ -6,9 +6,9 @@ using System.Web;
 using System.Web.Http;
 using Translators.C2CFramework.WebAPI.ChequeMatch;
 using Translators.C2CFramework.WebAPI.Models;
-using Matlab.SignatureVerification;
-using MathWorks.MATLAB.NET.Utility;
-using MathWorks.MATLAB.NET.Arrays;
+//using Matlab.SignatureVerification;
+//using MathWorks.MATLAB.NET.Utility;
+//using MathWorks.MATLAB.NET.Arrays;
 
 namespace Translators.C2CFramework.WebAPI.Controllers
 {
@@ -19,16 +19,16 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         public LiveChequePath ChequeDetection(string liveChequePath1)
         {
             #region MATLAB
-            var signaturePath = HttpContext.Current.Server.MapPath("~/ChequeImageData/CroppedCheques/Signature");
-            var signatureDirectory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/ChequeImageData/CroppedCheques/Signature"));
-            var signatureFile = (from f in signatureDirectory.GetFiles()
-                                 orderby f.LastWriteTime descending
-                                 select f).First();
+            //var signaturePath = HttpContext.Current.Server.MapPath("~/ChequeImageData/CroppedCheques/Signature");
+            //var signatureDirectory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/ChequeImageData/CroppedCheques/Signature"));
+            //var signatureFile = (from f in signatureDirectory.GetFiles()
+            //                     orderby f.LastWriteTime descending
+            //                     select f).First();
 
-            int id = 8;
-            var LiveSignaturePath = signaturePath  + "\\" +  signatureFile;
-            Signature sig = new Signature();
-            MWArray mw = sig.main(LiveSignaturePath, id);
+            //int id = 8;
+            //var LiveSignaturePath = signaturePath  + "\\" +  signatureFile;
+            //Signature sig = new Signature();
+            //MWArray mw = sig.main(LiveSignaturePath, id);
             #endregion
             //mycode
             var directory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/LiveChequeImageData/"));
@@ -47,7 +47,7 @@ namespace Translators.C2CFramework.WebAPI.Controllers
             DirectoryInfo directoryInfo;
 
             directoryInfo = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/ChequeImageData/ArchievedCheques/"));
-            files = directoryInfo.GetFiles("*.jpg", SearchOption.AllDirectories);
+            files = directoryInfo.GetFiles("*.jpg");
 
             ChequeProcess chequeProcess = new ChequeProcess();
             LiveChequePath liveChequePath  = new LiveChequePath();

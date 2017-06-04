@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Translators.C2CFramework.WebAPI.ChequeCrop;
 using Translators.C2CFramework.WebAPI.DAL.Repositories;
 using Translators.C2CFramework.WebAPI.Enum;
@@ -69,6 +71,7 @@ namespace Translators.C2CFramework.WebAPI.Controllers
             return _liveChequePathRepository.GetSingleLiveChequePath(id);
         }
 
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [Route("LiveChequePaths")]
         [HttpPost]
         public LiveChequePath Post([FromBody]LiveChequePath liveChequePath)
@@ -85,6 +88,10 @@ namespace Translators.C2CFramework.WebAPI.Controllers
             {
                 cropPointData.CropType = CropId;
                 CropPoint CropPoints = loadCropPoints.GetByCropType(cropPointData);
+                if(CropPoints == null)
+                {
+                    return liveChequePath;
+                }
                 pathList.Add(cropPointData.CropType.ToString(), liveChequeCrop.SaveCroppedImage(liveChequePath.LiveChequeImageFrontPath, CropId, CropPoints));
 
                 switch (CropId)
@@ -109,9 +116,19 @@ namespace Translators.C2CFramework.WebAPI.Controllers
                         break;
                 }
             }
+            var directory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/ChequeImageData/ArchievedCheques/"));
+            var myFile = (from f in directory.GetFiles()
+                          orderby f.LastWriteTime descending
+                          select f).Last();
 
+
+            var path = HttpContext.Current.Server.MapPath("~/ChequeImageData/ArchievedCheques/");
+            string fullpath = path + Path.GetFileName(liveChequePath.LiveChequeImageFrontPath);
+            var streamSource = new System.IO.FileStream(path + myFile, FileMode.Open, FileAccess.Read);
+            streamSource.Close();
+            //File.Delete(path + myFile.ToString());
             /////////////////////////////////////////////////////////////////////////////////////////////delete cheque from Archieved Cheque Folder
-            //var path = HttpContext.Current.Server.MapPath("~/ChequeImageData/ArchievedCheques/");
+
             //string des = HttpContext.Current.Server.MapPath("~/BackupLiveCheques/");
             //ChequeRepository c = new ChequeRepository();
 
@@ -135,6 +152,7 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         {
             return _liveChequePathRepository.DeleteLiveChequePath(id);
         }
+        
 
     }
 }

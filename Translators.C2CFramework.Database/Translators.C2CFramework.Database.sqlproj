@@ -95,5 +95,10 @@
     <Build Include="Tables\LiveChequePaths.sql" />
     <Build Include="StoredProcedures\Cheques_GetByChequePath.sql" />
     <Build Include="StoredProcedures\Cheques_GetByBankIdFrontPath.sql" />
+    <Build Include="Tables\Users.sql" />
+    <Build Include="StoredProcedures\Users_GetByAccountNumber.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Translators.C2CFramework.Database.refactorlog" />
   </ItemGroup>
 </Project>

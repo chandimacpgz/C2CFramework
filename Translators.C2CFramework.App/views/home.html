@@ -3,7 +3,7 @@
     <h2 class="md-toolbar-tools">Cheque Interface</h2>
 </md-toolbar>
 <span><br /><br /></span>
-    <image ng-src="http://localhost:59056/LiveChequeImageData/{{imageName}}" />
+    <image ng-src="http://localhost:59056/LiveChequeImageData/{{imageName}}" width="50%" height="50%"/>
     <md-progress-circular md-mode="indeterminate" md-diameter="96" ng-show="showSpinner"></md-progress-circular>
     <md-content class="loading" ng-show="showSpinner">Cheque Detecting</md-content>
     <md-content ng-show="showBank">{{BankData.name}} Cheque Detected</md-content>

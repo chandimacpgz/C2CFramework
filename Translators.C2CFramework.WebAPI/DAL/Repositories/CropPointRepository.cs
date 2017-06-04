@@ -49,13 +49,13 @@ namespace Translators.C2CFramework.WebAPI.DAL.Repositories
 
         public CropPoint GetCropPointsByCropType(CropPoint cropPoint)
         {
-            string singleCropType = cropPoint.CropType.ToString();
+            //string singleCropType = cropPoint.CropType;
             return _db.Query<CropPoint>("CropPoints_GetByCropType",
                 new
                 {
                     BankId = cropPoint.BankId,
                     ChequeId = cropPoint.ChequeId,
-                    SingleCropType = singleCropType
+                    SingleCropType = cropPoint.CropType
 
                 }, commandType: CommandType.StoredProcedure).SingleOrDefault();
         }

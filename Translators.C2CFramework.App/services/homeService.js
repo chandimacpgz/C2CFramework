@@ -11,6 +11,7 @@
         service.getBankName = getBankName;
         service.cropCheque = cropCheque;
         service.deleteFailCheque = deleteFailCheque;
+        service.getUser = getUser;
         return service;
 
         function getImageName() {
@@ -27,6 +28,16 @@
 
         function getBankName(bankId) {
             return $http.get(endPoints.webApi + 'banks/'+ bankId).then(handleSuccess, handleError('Error getting bank details'));
+        }
+
+        function getUser(chequeData) {
+            return $http({
+                url: endPoints.webApi + 'user',
+                method: "POST",
+                data: chequeData,
+                headers: { 'Content-Type': 'application/json' }
+            }).then(handleSuccess, handleError('Error cropping cheque'));
+
         }
 
         function cropCheque(chequeData) {

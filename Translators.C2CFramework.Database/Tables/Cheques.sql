@@ -11,6 +11,5 @@
 	[UpdatedDate] DATETIME NULL,
 	[IsDeleted] BIT NOT NULL DEFAULT(0),
 	CONSTRAINT PK_Cheques_ID PRIMARY KEY ([Id]),
-	CONSTRAINT UN_Cheques_ID UNIQUE ([BankId],[Id],[ArchievedChequeFrontPath]),
 	CONSTRAINT FK_Cheques_BankId FOREIGN KEY ([BankId]) REFERENCES [dbo].[Banks]([Id])
 )

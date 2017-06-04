@@ -1,10 +1,10 @@
 ﻿var app = angular.module('chequeApp', [
-    'ui.router', 'ngMaterial', 'ngMessages', 'cfp.loadingBar', 'md.data.table', 'ngFileUpload', 'ngMagnify'
+    'ui.router', 'ngMaterial', 'ngMessages', 'cfp.loadingBar', 'md.data.table', 'ngFileUpload'
 ]);
 
 app.constant('endPoints', {
     webApi: 'http://localhost:59056/'
-    //webApi: 'http://translatorsapi.azurewebsites.net/'
+    //webApi: 'http://c2capi.azurewebsites.net/'
 });
 
 app.config(function ($stateProvider, $urlRouterProvider) {

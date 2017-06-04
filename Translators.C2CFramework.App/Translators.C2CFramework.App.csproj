@@ -87,13 +87,13 @@
     <Content Include="controllers\bankController.js" />
     <Content Include="controllers\chequeController.js" />
     <Content Include="controllers\homeController.js" />
+    <Content Include="favicon.ico" />
     <Content Include="img\icons\ic_close_24px.svg" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="bower.json" />
     <Content Include="package.json" />
-    <None Include="Properties\PublishProfiles\translators - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\translators - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

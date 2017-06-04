@@ -18,7 +18,7 @@
             cfpLoadingBar.complete();
 
             var timer = function () {
-                if (state!= null) {
+                if (state!== null) {
                     $scope.imageName = state;
                     $scope.showSpinner = true;
                     var liveChequePath = $scope.imageName;
@@ -27,8 +27,10 @@
                     HomeService.getChequeDetection(liveChequePath).then(function (state) {
                         $scope.pathData = state;
 
-                        if ($scope.pathData.bankId == 0) {
+                        if ($scope.pathData.bankId === 0 || $scope.pathData.bankId === undefined) {
                             $scope.showBankFail = true;
+                            window.location.reload(true);
+                            //////////////////////////////////////////////////////////////////////////////////////delete archieved cheque
                             //////////////////////////////////////////////////////////////////////////////////////should clear cache
                             $timeout(timer, 5000);
                         }
@@ -60,16 +62,24 @@
                     //Send the cheque for crop function
                     HomeService.cropCheque(cropChequeData).then(function (state) {
                         $scope.resultCrop = state;
-                        if (state.isDeleted == false) {
+                        if (state.numericalAmountCroppedImagePath !== null || state.numericalAmountCroppedImagePath !== undefined) {
                             $scope.showcropResultDone = true;
+                            getUserInfo($scope.resultCrop);
                         }
                         else {
                             $scope.showcropResultFail = true;
-                            $templateCache.removeAll();
+                            window.location.reload(true)
                             $timeout(timer, 5000);
                         }
                     });
 
+                });
+            }
+
+            var getUserInfo = function (liveChequePaths) {
+                //Get MICR and AccountNo
+                HomeService.GetUser(liveChequePaths).then(function (state) {
+                    $scope.resultCrop = state;
                 });
             }
 
