@@ -9,7 +9,7 @@ namespace Translators.C2CFramework.WebAPI.MICR
     {
         public string GetAccountNumber(string MICRPath)
         {
-            string AccountNumber = "";
+            string AccountNumber = "1500045100";
             return AccountNumber;
         }
     }

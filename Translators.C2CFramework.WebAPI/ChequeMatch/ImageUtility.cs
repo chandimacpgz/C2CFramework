@@ -4,7 +4,6 @@ using System.Drawing.Imaging;
 
 namespace Translators.C2CFramework.WebAPI.ChequeMatch
 {
-    // An utility class to do simple image processing.
     public static class ImageUtility
     {
         public static Bitmap ResizeBitmap(Bitmap bitmap, int width, int height)

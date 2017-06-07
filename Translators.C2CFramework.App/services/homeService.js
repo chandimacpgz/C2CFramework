@@ -12,6 +12,7 @@
         service.cropCheque = cropCheque;
         service.deleteFailCheque = deleteFailCheque;
         service.getUser = getUser;
+        service.getSignature = getSignature;
         return service;
 
         function getImageName() {
@@ -30,13 +31,23 @@
             return $http.get(endPoints.webApi + 'banks/'+ bankId).then(handleSuccess, handleError('Error getting bank details'));
         }
 
-        function getUser(chequeData) {
+        function getSignature(chequeData) {
             return $http({
-                url: endPoints.webApi + 'user',
+                url: endPoints.webApi + 'users/signature',
                 method: "POST",
                 data: chequeData,
                 headers: { 'Content-Type': 'application/json' }
-            }).then(handleSuccess, handleError('Error cropping cheque'));
+            }).then(handleSuccess, handleError('Error getting signature'));
+
+        }
+
+        function getUser(chequeData) {
+            return $http({
+                url: endPoints.webApi + 'users',
+                method: "POST",
+                data: chequeData,
+                headers: { 'Content-Type': 'application/json' }
+            }).then(handleSuccess, handleError('Error getting user'));
 
         }
 

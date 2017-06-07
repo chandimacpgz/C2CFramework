@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{5eec4386-a0d1-4609-aa43-574420ab0d42}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -97,6 +97,7 @@
     <Build Include="StoredProcedures\Cheques_GetByBankIdFrontPath.sql" />
     <Build Include="Tables\Users.sql" />
     <Build Include="StoredProcedures\Users_GetByAccountNumber.sql" />
+    <Build Include="Grant.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Translators.C2CFramework.Database.refactorlog" />

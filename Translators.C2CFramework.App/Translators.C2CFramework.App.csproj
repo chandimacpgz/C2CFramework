@@ -88,7 +88,9 @@
     <Content Include="controllers\chequeController.js" />
     <Content Include="controllers\homeController.js" />
     <Content Include="favicon.ico" />
+    <Content Include="img\icons\green.png" />
     <Content Include="img\icons\ic_close_24px.svg" />
+    <Content Include="img\icons\red.png" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="bower.json" />

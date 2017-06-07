@@ -71,7 +71,6 @@ namespace Translators.C2CFramework.WebAPI.Controllers
             return _liveChequePathRepository.GetSingleLiveChequePath(id);
         }
 
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [Route("LiveChequePaths")]
         [HttpPost]
         public LiveChequePath Post([FromBody]LiveChequePath liveChequePath)

@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Users]
 (
-	[Id] INT NOT NULL IDENTITY(100000, 1),
+	[Id] INT NOT NULL IDENTITY(1, 1),
 	[Name] NVARCHAR(2048) NOT NULL,
 	[AccountNumber] INT NOT NULL,
 	[Balance] FLOAT NULL,

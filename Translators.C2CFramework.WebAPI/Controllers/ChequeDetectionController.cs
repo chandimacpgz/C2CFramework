@@ -6,9 +6,7 @@ using System.Web;
 using System.Web.Http;
 using Translators.C2CFramework.WebAPI.ChequeMatch;
 using Translators.C2CFramework.WebAPI.Models;
-//using Matlab.SignatureVerification;
-//using MathWorks.MATLAB.NET.Utility;
-//using MathWorks.MATLAB.NET.Arrays;
+
 
 namespace Translators.C2CFramework.WebAPI.Controllers
 {
@@ -18,18 +16,14 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         [HttpGet]
         public LiveChequePath ChequeDetection(string liveChequePath1)
         {
-            #region MATLAB
-            //var signaturePath = HttpContext.Current.Server.MapPath("~/ChequeImageData/CroppedCheques/Signature");
-            //var signatureDirectory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/ChequeImageData/CroppedCheques/Signature"));
-            //var signatureFile = (from f in signatureDirectory.GetFiles()
-            //                     orderby f.LastWriteTime descending
-            //                     select f).First();
-
-            //int id = 8;
-            //var LiveSignaturePath = signaturePath  + "\\" +  signatureFile;
-            //Signature sig = new Signature();
-            //MWArray mw = sig.main(LiveSignaturePath, id);
-            #endregion
+            
+            DirectoryInfo firstfile = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/ChequeImageData/ArchievedCheques/"));
+            FileInfo[] garbagefiles = firstfile.GetFiles("1*");
+            if(garbagefiles.Count() != 0)
+            {
+                File.Delete(HttpContext.Current.Server.MapPath(@"~/ChequeImageData/ArchievedCheques/") + garbagefiles[0]);
+            }
+            
             //mycode
             var directory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/LiveChequeImageData/"));
             var myFile = (from f in directory.GetFiles()

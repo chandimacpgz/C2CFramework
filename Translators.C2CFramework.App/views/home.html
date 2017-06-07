@@ -1,14 +1,110 @@
 ﻿<div>
-<md-toolbar md-scroll-shrink class="md-hue-2">
-    <h2 class="md-toolbar-tools">Cheque Interface</h2>
-</md-toolbar>
-<span><br /><br /></span>
-    <image ng-src="http://localhost:59056/LiveChequeImageData/{{imageName}}" width="50%" height="50%"/>
-    <md-progress-circular md-mode="indeterminate" md-diameter="96" ng-show="showSpinner"></md-progress-circular>
-    <md-content class="loading" ng-show="showSpinner">Cheque Detecting</md-content>
-    <md-content ng-show="showBank">{{BankData.name}} Cheque Detected</md-content>
-    <md-content ng-show="showcropResultDone">Cheque Cropping Done</md-content>
-    <md-content class="loading" ng-show="showcropResultFail">Cheque Cropping Failed, Restarting in 5 seconds</md-content>
-    <md-content class="loading" ng-show="showBankFail">Cheque Detection Failed, Insert again. Restarting in 5 seconds</md-content>
+    <md-toolbar md-scroll-shrink class="md-hue-2">
+        <h2 class="md-toolbar-tools">Cheque Interface</h2>
+    </md-toolbar>
+    <span><br /><br /></span>
+    <image ng-src="http://localhost:59056/LiveChequeImageData/{{imageName}}" width="50%" height="50%" />
+    
+    <md-content class="loading" ng-show="showSpinner">
+        <md-progress-circular md-mode="indeterminate" md-diameter="60"></md-progress-circular>
+        <p>Cheque Detecting</p>
+    </md-content>
+    <md-content ng-show="showBank">
+        <table>
+            <tr>
+                <td><img src="../img/icons/green.png" style="height: 45px;width: auto;" /></td>
+                <td><p><b>{{BankData.name}} </b>Cheque Detected</p></td>
+            </tr>
+        </table>
+    </md-content>
+    <md-content ng-show="showcropResultDone">
+        <table>
+            <tr>
+                <td><img src="../img/icons/green.png" style="height: 45px;width: auto;" /></td>
+                <td><p>Cheque Cropping Done</p></td>
+            </tr>
+        </table>
+    </md-content>
+    <md-content ng-show="showcropResultFail">
+        <table>
+            <tr>
+                <td><img src="../img/icons/red.png" style="height: 45px;width: auto;" /></td>
+                <td><p>Cheque Cropping Failed</p></td>
+            </tr>
+        </table>
+    </md-content>
+    <md-content ng-show="showBankFail">
+        <table>
+            <tr>
+                <td><img src="../img/icons/red.png" style="height: 45px;width: auto;" /></td>
+                <td><p>Cheque Detection Failed</p></td>
+            </tr>
+        </table>
+    </md-content>
+    <md-content ng-show="showMICRFail">
+        <table>
+            <tr>
+                <td><img src="../img/icons/red.png" style="height: 45px;width: auto;" /></td>
+                <td><p>MICR Detection Failed</p></td>
+            </tr>
+        </table>
+    </md-content>
+    <md-content ng-show="showDateFail">
+        <table>
+            <tr>
+                <td><img src="../img/icons/red.png" style="height: 45px;width: auto;" /></td>
+                <td><p>Invalid Date</p></td>
+            </tr>
+        </table>
+    </md-content>
+    <md-content ng-show="showSignatureFail">
+        <table>
+            <tr>
+                <td><img src="../img/icons/red.png" style="height: 45px;width: auto;" /></td>
+                <td><p>Invalid Signature</p></td>
+            </tr>
+        </table>
+    </md-content>
+    <md-content ng-show="showSignatureDone">
+        <table>
+            <tr>
+                <td><img src="../img/icons/green.png" style="height: 45px;width: auto;" /></td>
+                <td><p>Valid Signature</p></td>
+            </tr>
+        </table>
+    </md-content>
+    <md-content ng-show="showUserDetails">
+        <table>
+            <tr>
+                <td><b>User Details</b></td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td>User Name:</td>
+                <td><p>{{userData.name}}</p></td>
+            </tr>
+            <tr>
+                <td>User Email:</td>
+                <td><p>{{userData.email}}</p></td>
+            </tr>
+            <tr>
+                <td>User Account No.:</td>
+                <td><p>{{userData.accountNumber}}</p></td>
+            </tr>
+        </table>
+    </md-content>
+
+
+    <!--<md-content class="loading" ng-show="showcropResultFail">Cheque Cropping Failed, Restarting in 5 seconds</md-content>-->
+    <!--<md-content class="loading" ng-show="showBankFail">Cheque Detection Failed, Insert again. Restarting in 5 seconds</md-content>-->
+    <!--<md-content class="loading" ng-show="showMICRFail">MICR Detection Failed, Insert again. Restarting in 5 seconds</md-content>-->
+    <!--<md-content class="loading" ng-show="showSignatureFail">Signature Detection Failed, Insert again. Restarting in 5 seconds</md-content>-->
+    <!--<md-content ng-show="showSignatureDone">Signature Detection Successful</md-content>-->
+    <!--<md-content ng-show="showUserDetails">
+        <p><b>User Details</b></p><br />
+        <p>User Name: {{userData.name}}</p>
+        <p>User Email: {{userData.email}}</p>
+        <p>User Account No.: {{userData.accountNumber}}</p>
+    </md-content>-->
 </div>
 
