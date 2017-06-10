@@ -13,10 +13,11 @@ namespace Translators.C2CFramework.WebAPI.Signature
     {
         public bool GetSignature(string SignaturePath, int UserId)
         {
+            int fakeId = 4;
             #region MATLAB
             var signaturePath = HttpContext.Current.Server.MapPath(SignaturePath);
             Matlab.SignatureVerification.Signature sig = new Matlab.SignatureVerification.Signature();
-            MWArray mw = sig.main(signaturePath, UserId);
+            MWArray mw = sig.main(signaturePath, fakeId);
 
             if (Convert.ToInt32(mw) > 0.5)
             {

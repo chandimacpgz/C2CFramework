@@ -16,5 +16,6 @@ namespace Translators.C2CFramework.WebAPI.Models
         public DateTime UpdatedDate { get; set; }
         public bool IsDeleted { get; set; }
         public string Path  { get; set; }
+        public string DetectedDate { get; set; }
     }
 }

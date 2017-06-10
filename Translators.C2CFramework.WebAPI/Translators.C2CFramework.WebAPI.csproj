@@ -156,6 +156,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LegalAmount\LegalAmountProcess.cs" />
     <Compile Include="MICR\MICRProcess.cs" />
     <Compile Include="Models\ATM.cs" />
     <Compile Include="Models\Bank.cs" />

@@ -12,7 +12,6 @@ namespace Translators.C2CFramework.WebAPI.CourtesyAmount
         public string GetCourtesyAmount(string CourtesyAmountPath)
         {
             var courtesyAmountPath = HttpContext.Current.Server.MapPath(CourtesyAmountPath);
-            var pythonpath = HttpContext.Current.Server.MapPath("~/cgi-bin/hello.py");
             string detectedValue = run_cmd(@"D:\dev\C2CFrameworkWeb\Translators.C2CFramework\Translators.C2CFramework.WebAPI\CourtesyAmount\courtesyAmountRecognition.py " + courtesyAmountPath);
             return detectedValue;
         }

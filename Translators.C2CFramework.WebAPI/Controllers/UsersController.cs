@@ -7,6 +7,7 @@ using System.Web.Http;
 using Translators.C2CFramework.WebAPI.CourtesyAmount;
 using Translators.C2CFramework.WebAPI.DAL.Repositories;
 using Translators.C2CFramework.WebAPI.Date;
+using Translators.C2CFramework.WebAPI.LegalAmount;
 using Translators.C2CFramework.WebAPI.MICR;
 using Translators.C2CFramework.WebAPI.Models;
 using Translators.C2CFramework.WebAPI.Signature;
@@ -29,16 +30,10 @@ namespace Translators.C2CFramework.WebAPI.Controllers
             MICRProcess micr = new MICRProcess();
             int AccountNumber = Convert.ToInt32(micr.GetAccountNumber(liveChequePath.MICRCroppedImagePath));
             DateProcess dateVal = new DateProcess();
-            bool DateValidity = dateVal.CheckDate(liveChequePath.DateCroppedImagePath);
-            if (DateValidity)
-            {
-                return _userRepository.GetUserByAccountNumber(AccountNumber);
-            }
-            else
-            {
-                return null;
-            }
-
+            User detectedUser = new User();
+            detectedUser = _userRepository.GetUserByAccountNumber(AccountNumber);
+            detectedUser.DetectedDate =  dateVal.CheckDate(liveChequePath.DateCroppedImagePath);
+            return detectedUser;
         }
 
         [Route("Users/Signature")]
@@ -56,6 +51,15 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         {
             CourtesyAmountProcess ca = new CourtesyAmountProcess();
             string result = ca.GetCourtesyAmount(courtesyeData.Path);
+            return result;
+        }
+
+        [Route("Users/LegalAmount")]
+        [HttpPost]
+        public string PostAmount([FromBody]User legalData)
+        {
+            LegalAmountProcess la = new LegalAmountProcess();
+            string result = la.GetLegalAmount(legalData.Path);
             return result;
         }
     }
