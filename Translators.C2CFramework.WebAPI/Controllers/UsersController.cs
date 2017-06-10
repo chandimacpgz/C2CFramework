@@ -50,7 +50,8 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         public string PostNumericalAmount([FromBody]User courtesyeData)
         {
             CourtesyAmountProcess ca = new CourtesyAmountProcess();
-            string result = ca.GetCourtesyAmount(courtesyeData.Path);
+            string fullResult = ca.GetCourtesyAmount(courtesyeData.Path);
+            string result = fullResult.Remove(fullResult.Length - 4);
             return result;
         }
 
