@@ -122,6 +122,25 @@
 
             }
 
+            var getNumericalAmountVerification = function (liveChequePaths) {
+                //Get Courtesy Amount
+                var courtesyeData = {
+                    "path": liveChequePaths.numericalAmountCroppedImagePath
+                };
+                HomeService.getNumericalAmount(courtesyeData).then(function (state) { ////////////////////check returns
+                    $scope.numericalValue = state;
+                    if ($scope.userSignature === true) {
+                        $scope.showSignatureDone = true;
+                    }
+                    else {
+                        $scope.showSignatureFail = true;
+                        var error = "Invalid Signature, Cannot Proceed. Restarting in 5 seconds";
+                        showError(error);
+                    }
+                });
+
+            }
+
             $timeout(timer, 1000); 
             
             

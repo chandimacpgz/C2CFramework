@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Translators.C2CFramework.WebAPI.CourtesyAmount;
 using Translators.C2CFramework.WebAPI.DAL.Repositories;
 using Translators.C2CFramework.WebAPI.Date;
 using Translators.C2CFramework.WebAPI.MICR;
@@ -47,6 +48,15 @@ namespace Translators.C2CFramework.WebAPI.Controllers
             SignatureProcess sig = new SignatureProcess();
             bool SignatureValidity = sig.GetSignature(signatureData.Path, signatureData.Id);
             return SignatureValidity;
+        }
+
+        [Route("Users/CourtesyAmount")]
+        [HttpPost]
+        public string PostNumericalAmount([FromBody]User courtesyeData)
+        {
+            CourtesyAmountProcess ca = new CourtesyAmountProcess();
+            string result = ca.GetCourtesyAmount(courtesyeData.Path);
+            return result;
         }
     }
 }

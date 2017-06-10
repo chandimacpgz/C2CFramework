@@ -41,6 +41,8 @@ namespace Translators.C2CFramework.WebAPI.Controllers
             DirectoryInfo directoryInfo;
 
             directoryInfo = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/ChequeImageData/ArchievedCheques/"));
+
+
             files = directoryInfo.GetFiles("*.jpg");
 
             ChequeProcess chequeProcess = new ChequeProcess();

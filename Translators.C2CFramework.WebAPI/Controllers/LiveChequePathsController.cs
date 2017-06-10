@@ -122,19 +122,7 @@ namespace Translators.C2CFramework.WebAPI.Controllers
 
 
             var path = HttpContext.Current.Server.MapPath("~/ChequeImageData/ArchievedCheques/");
-            string fullpath = path + Path.GetFileName(liveChequePath.LiveChequeImageFrontPath);
-            var streamSource = new System.IO.FileStream(path + myFile, FileMode.Open, FileAccess.Read);
-            streamSource.Close();
-            //File.Delete(path + myFile.ToString());
-            /////////////////////////////////////////////////////////////////////////////////////////////delete cheque from Archieved Cheque Folder
-
-            //string des = HttpContext.Current.Server.MapPath("~/BackupLiveCheques/");
-            //ChequeRepository c = new ChequeRepository();
-
-            //var chequeFileName = c.GetSingleCheque(liveChequePath.ChequeId);
-            ////string deletePath = path + Path.GetFileName(liveChequePath.LiveChequeImageFrontPath);
-            //File.Copy(path + Path.GetFileName(liveChequePath.LiveChequeImageFrontPath), des + Path.GetFileName(liveChequePath.LiveChequeImageFrontPath));
-            //File.Delete(path + Path.GetFileName(liveChequePath.LiveChequeImageFrontPath));
+            File.Delete(path + myFile.ToString());
             return _liveChequePathRepository.InsertLiveChequePath(liveChequePath);
         }
 

@@ -97,7 +97,6 @@
     <Build Include="StoredProcedures\Cheques_GetByBankIdFrontPath.sql" />
     <Build Include="Tables\Users.sql" />
     <Build Include="StoredProcedures\Users_GetByAccountNumber.sql" />
-    <Build Include="Grant.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Translators.C2CFramework.Database.refactorlog" />

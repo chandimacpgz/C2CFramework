@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-//using Matlab.SignatureVerification;
-//using MathWorks.MATLAB.NET.Utility;
-//using MathWorks.MATLAB.NET.Arrays;
+using Matlab.SignatureVerification;
+using MathWorks.MATLAB.NET.Utility;
+using MathWorks.MATLAB.NET.Arrays;
 using System.IO;
 
 namespace Translators.C2CFramework.WebAPI.Signature
@@ -15,11 +15,19 @@ namespace Translators.C2CFramework.WebAPI.Signature
         {
             #region MATLAB
             var signaturePath = HttpContext.Current.Server.MapPath(SignaturePath);
-            //Signature sig = new Signature();
-            //MWArray mw = sig.main(signaturePath, UserId);
-            
+            Matlab.SignatureVerification.Signature sig = new Matlab.SignatureVerification.Signature();
+            MWArray mw = sig.main(signaturePath, UserId);
+
+            if (Convert.ToInt32(mw) > 0.5)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
             #endregion
-            return true;
+            
         }
     }
 }

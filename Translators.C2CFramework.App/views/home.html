@@ -3,7 +3,7 @@
         <h2 class="md-toolbar-tools">Cheque Interface</h2>
     </md-toolbar>
     <span><br /><br /></span>
-    <image ng-src="http://localhost:59056/LiveChequeImageData/{{imageName}}" width="50%" height="50%" />
+    <image ng-src="http://localhost/LiveChequeImageData/{{imageName}}" width="50%" height="50%" />
     
     <md-content class="loading" ng-show="showSpinner">
         <md-progress-circular md-mode="indeterminate" md-diameter="60"></md-progress-circular>
@@ -12,7 +12,7 @@
     <md-content ng-show="showBank">
         <table>
             <tr>
-                <td><img src="../img/icons/green.png" style="height: 45px;width: auto;" /></td>
+                <td><img src="TranslatorsApp/../img/icons/green.png" style="height: 45px;width: auto;" /></td>
                 <td><p><b>{{BankData.name}} </b>Cheque Detected</p></td>
             </tr>
         </table>
@@ -20,7 +20,7 @@
     <md-content ng-show="showcropResultDone">
         <table>
             <tr>
-                <td><img src="../img/icons/green.png" style="height: 45px;width: auto;" /></td>
+                <td><img src="TranslatorsApp/../img/icons/green.png" style="height: 45px;width: auto;" /></td>
                 <td><p>Cheque Cropping Done</p></td>
             </tr>
         </table>
@@ -28,7 +28,7 @@
     <md-content ng-show="showcropResultFail">
         <table>
             <tr>
-                <td><img src="../img/icons/red.png" style="height: 45px;width: auto;" /></td>
+                <td><img src="TranslatorsApp/../img/icons/red.png" style="height: 45px;width: auto;" /></td>
                 <td><p>Cheque Cropping Failed</p></td>
             </tr>
         </table>
@@ -36,7 +36,7 @@
     <md-content ng-show="showBankFail">
         <table>
             <tr>
-                <td><img src="../img/icons/red.png" style="height: 45px;width: auto;" /></td>
+                <td><img src="TranslatorsApp/../img/icons/red.png" style="height: 45px;width: auto;" /></td>
                 <td><p>Cheque Detection Failed</p></td>
             </tr>
         </table>
@@ -44,7 +44,7 @@
     <md-content ng-show="showMICRFail">
         <table>
             <tr>
-                <td><img src="../img/icons/red.png" style="height: 45px;width: auto;" /></td>
+                <td><img src="TranslatorsApp/../img/icons/red.png" style="height: 45px;width: auto;" /></td>
                 <td><p>MICR Detection Failed</p></td>
             </tr>
         </table>
@@ -52,7 +52,7 @@
     <md-content ng-show="showDateFail">
         <table>
             <tr>
-                <td><img src="../img/icons/red.png" style="height: 45px;width: auto;" /></td>
+                <td><img src="TranslatorsApp/../img/icons/red.png" style="height: 45px;width: auto;" /></td>
                 <td><p>Invalid Date</p></td>
             </tr>
         </table>
@@ -60,7 +60,7 @@
     <md-content ng-show="showSignatureFail">
         <table>
             <tr>
-                <td><img src="../img/icons/red.png" style="height: 45px;width: auto;" /></td>
+                <td><img src="TranslatorsApp/../img/icons/red.png" style="height: 45px;width: auto;" /></td>
                 <td><p>Invalid Signature</p></td>
             </tr>
         </table>
@@ -68,7 +68,7 @@
     <md-content ng-show="showSignatureDone">
         <table>
             <tr>
-                <td><img src="../img/icons/green.png" style="height: 45px;width: auto;" /></td>
+                <td><img src="TranslatorsApp/../img/icons/green.png" style="height: 45px;width: auto;" /></td>
                 <td><p>Valid Signature</p></td>
             </tr>
         </table>

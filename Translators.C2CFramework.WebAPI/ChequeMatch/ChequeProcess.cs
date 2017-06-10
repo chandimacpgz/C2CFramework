@@ -18,7 +18,23 @@ namespace Translators.C2CFramework.WebAPI.ChequeMatch
 
             var comparableImages = new List<ComparableImage>();
 
-            foreach (var file in files)
+            // copy to temp
+
+            var tempath = Path.GetTempFileName();
+            File.Delete(tempath);
+            Directory.CreateDirectory(tempath);
+
+            var tempFiles = new FileInfo[files.Length];
+            for (int i = 0; i<files.Length; i++)
+            {
+                var file = files[i];
+                var nfilename = tempath + "\\" + Path.GetFileName(file.FullName);
+                File.Copy(file.FullName, nfilename);
+                tempFiles[i] = new FileInfo(nfilename);
+            }
+
+
+            foreach (var file in tempFiles)
             {
                 var comparableImage = new ComparableImage(file);
                 comparableImages.Add(comparableImage);
@@ -57,16 +73,6 @@ namespace Translators.C2CFramework.WebAPI.ChequeMatch
 
 
 
-        }
-
-        ~ChequeProcess(){
-            var directory = new DirectoryInfo(HttpContext.Current.Server.MapPath(@"~/ChequeImageData/ArchievedCheques/"));
-            var myFile = (from f in directory.GetFiles()
-                          orderby f.LastWriteTime descending
-                          select f).First();
-            //while (IsFileLocked(myFile))
-            //    Thread.Sleep(1000);
-            File.Delete(Path.Combine(directory.ToString(), myFile.ToString()));
         }
     }
 }

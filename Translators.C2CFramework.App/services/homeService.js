@@ -13,6 +13,7 @@
         service.deleteFailCheque = deleteFailCheque;
         service.getUser = getUser;
         service.getSignature = getSignature;
+        service.getNumericalAmount = getNumericalAmount;
         return service;
 
         function getImageName() {
@@ -38,6 +39,16 @@
                 data: chequeData,
                 headers: { 'Content-Type': 'application/json' }
             }).then(handleSuccess, handleError('Error getting signature'));
+
+        }
+
+        function getNumericalAmount(chequeData) {
+            return $http({
+                url: endPoints.webApi + 'users/courtesyAmount',
+                method: "POST",
+                data: chequeData,
+                headers: { 'Content-Type': 'application/json' }
+            }).then(handleSuccess, handleError('Error getting numerical amount'));
 
         }
 

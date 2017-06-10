@@ -23,7 +23,7 @@ namespace Translators.C2CFramework.WebAPI.ChequeCrop
             HttpResponse response = GetHttpResponse();
 
             response.ContentType = "image/jpeg";
-            savePath = "ChequeImageData/CroppedCheques/" + CropName + "/" + CropName + "_" + number.Next(0, 100000) + ".jpg";
+            savePath = "~/ChequeImageData/CroppedCheques/" + CropName + "/" + CropName + "_" + number.Next(0, 100000) + ".jpg";
             croppedBitmap.Save(HttpContext.Current.Server.MapPath(savePath), ImageFormat.Jpeg);
 
             return savePath;
