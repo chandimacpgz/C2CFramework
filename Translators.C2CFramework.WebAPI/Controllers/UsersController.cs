@@ -27,12 +27,23 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         [HttpPost]
         public User Post([FromBody]LiveChequePath liveChequePath)
         {
-            MICRProcess micr = new MICRProcess();
-            int AccountNumber = Convert.ToInt32(micr.GetAccountNumber(liveChequePath.MICRCroppedImagePath));
-            DateProcess dateVal = new DateProcess();
             User detectedUser = new User();
-            detectedUser = _userRepository.GetUserByAccountNumber(AccountNumber);
-            detectedUser.DetectedDate =  dateVal.CheckDate(liveChequePath.DateCroppedImagePath);
+            MICRProcess micr = new MICRProcess();
+            try
+            {
+                
+                string AccountNumber = micr.GetAccountNumber(liveChequePath.MICRCroppedImagePath).Substring(0, 10);
+                detectedUser = _userRepository.GetUserByAccountNumber(AccountNumber);
+
+                DateProcess dateVal = new DateProcess();
+                string detDate = dateVal.CheckDate(liveChequePath.DateCroppedImagePath);
+                detectedUser.DetectedDate = detDate.Remove(detDate.Length - 2);
+            }
+            catch(Exception e)
+            {
+                return detectedUser;
+            }
+
             return detectedUser;
         }
 

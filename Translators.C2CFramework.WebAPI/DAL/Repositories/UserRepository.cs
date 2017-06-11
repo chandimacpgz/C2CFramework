@@ -20,7 +20,7 @@ namespace Translators.C2CFramework.WebAPI.DAL.Repositories
             _db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
         }
 
-        public User GetUserByAccountNumber(int AccountNumber)
+        public User GetUserByAccountNumber(string AccountNumber)
         {
             return _db.Query<User>("Users_GetByAccountNumber",
                 new

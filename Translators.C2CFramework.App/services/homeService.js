@@ -14,6 +14,7 @@
         service.getUser = getUser;
         service.getSignature = getSignature;
         service.getNumericalAmount = getNumericalAmount;
+        service.getAmount = getAmount;
         return service;
 
         function getImageName() {
@@ -49,6 +50,16 @@
                 data: chequeData,
                 headers: { 'Content-Type': 'application/json' }
             }).then(handleSuccess, handleError('Error getting numerical amount'));
+
+        }
+
+        function getAmount(chequeData) {
+            return $http({
+                url: endPoints.webApi + 'users/legalAmount',
+                method: "POST",
+                data: chequeData,
+                headers: { 'Content-Type': 'application/json' }
+            }).then(handleSuccess, handleError('Error getting legal amount'));
 
         }
 

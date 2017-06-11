@@ -3,8 +3,8 @@
 ]);
 
 app.constant('endPoints', {
-    webApi: 'http://localhost:80/'
-    //webApi: 'http://localhost:59056/'
+    //webApi: 'http://localhost:80/'
+    webApi: 'http://localhost:59056/'
     //webApi: 'http://c2capi.azurewebsites.net/'
 });
 

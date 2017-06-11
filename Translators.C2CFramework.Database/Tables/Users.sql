@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[Users]
 (
-	[Id] INT NOT NULL IDENTITY(1, 1),
+	[Id] INT PRIMARY KEY,
 	[Name] NVARCHAR(2048) NOT NULL,
-	[AccountNumber] INT NOT NULL,
+	[AccountNumber] NVARCHAR(2048) NOT NULL,
 	[Balance] FLOAT NULL,
 	[Email] NVARCHAR(2048) NOT NULL,
 	[CreatedDate] DATETIME NULL,

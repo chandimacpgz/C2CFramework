@@ -84,16 +84,11 @@
                 //Get MICR and AccountNo
                 HomeService.getUser(liveChequePaths).then(function (state) {
                     $scope.userData = state;
-                    if ($scope.userData.id !== null) { ////////////////////////////////////////correct the condition
+                    if ($scope.userData.id !== null) {
                         $scope.showUserDetails = true;
                         getSignatureVerification(liveChequePaths, $scope.userData);
                     }
 
-                    else if ($scope.userData === null) {
-                        $scope.showDateFail = true;
-                        var error = "Invalid Date, Cannot Proceed. Restarting in 5 seconds";
-                        showError(error);
-                    }
                     else {
                         $scope.showMICRFail = true;
                         var error = "MICR Detection Failed, Cannot Proceed. Restarting in 5 seconds";
@@ -112,6 +107,7 @@
                     $scope.userSignature = state;
                     if ($scope.userSignature === true) {
                         $scope.showSignatureDone = true;
+                        getNumericalAmountVerification(liveChequePaths);
                     }
                     else {
                         $scope.showSignatureFail = true;
@@ -129,12 +125,32 @@
                 };
                 HomeService.getNumericalAmount(courtesyeData).then(function (state) { ////////////////////check returns
                     $scope.numericalValue = state;
-                    if ($scope.userSignature === true) {
-                        $scope.showSignatureDone = true;
+                    if ($scope.numericalValue !== null) {
+                        $scope.showCourtesyDone = true;
+                        getAmountVerification(liveChequePaths);
                     }
                     else {
-                        $scope.showSignatureFail = true;
-                        var error = "Invalid Signature, Cannot Proceed. Restarting in 5 seconds";
+                        $scope.showCourtesyFail = true;
+                        var error = "Courtesy Amount Not Detected, Cannot Proceed. Restarting in 5 seconds";
+                        showError(error);
+                    }
+                });
+
+            }
+
+            var getAmountVerification = function (liveChequePaths) {
+                //Get Courtesy Amount
+                var legalData = {
+                    "path": liveChequePaths.amountCroppedImagePath
+                };
+                HomeService.getAmount(legalData).then(function (state) { ////////////////////check returns
+                    $scope.legalValue = state;
+                    if ($scope.legalValue !== null) {
+                        $scope.showLegalDone = true;
+                    }
+                    else {
+                        $scope.showLegalFail = true;
+                        var error = "Legal Amount Not Detected, Cannot Proceed. Restarting in 5 seconds";
                         showError(error);
                     }
                 });

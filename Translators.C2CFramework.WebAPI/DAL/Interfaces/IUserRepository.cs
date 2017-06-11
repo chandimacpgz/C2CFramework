@@ -8,6 +8,6 @@ namespace Translators.C2CFramework.WebAPI.DAL.Interfaces
 {
     internal interface IUserRepository
     {
-        User GetUserByAccountNumber(int AccountNumber);
+        User GetUserByAccountNumber(string AccountNumber);
     }
 }

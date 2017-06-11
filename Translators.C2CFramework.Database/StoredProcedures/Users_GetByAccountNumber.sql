@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[Users_GetByAccountNumber]
-	@AccountNumber INT
+	@AccountNumber NVARCHAR(2048)
 AS
 BEGIN
 	SELECT	[Id],
