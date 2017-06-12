@@ -18,8 +18,8 @@ namespace Translators.C2CFramework.WebAPI.Signature
             var signaturePath = HttpContext.Current.Server.MapPath(SignaturePath);
             Matlab.SignatureVerification.Signature sig = new Matlab.SignatureVerification.Signature();
             MWArray mw = sig.main(signaturePath, UserId);
-
-            if (Convert.ToInt32(mw) > 0.5)
+            double value = (double)((MWNumericArray)mw).ToVector(MWArrayComponent.Real).GetValue(0);
+            if (value > 0.5)
             {
                 return true;
             }

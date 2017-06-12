@@ -4,8 +4,6 @@ using System.IO;
 
 namespace Translators.C2CFramework.WebAPI.ChequeMatch
 {
-
-    // Represents an image and its RGB projections.
     public class ComparableImage
     {
         private readonly FileInfo file;
@@ -47,11 +45,6 @@ namespace Translators.C2CFramework.WebAPI.ChequeMatch
             }
         }
 
-        /// <summary>
-        /// Calculate the similarity to another image.
-        /// </summary>
-        /// <param name="compare">The image to compare with.</param>
-        /// <returns>Return a value from 0 to 1 that is the similarity.</returns>
         public double CalculateSimilarity(ComparableImage compare)
         {
             return projections.CalculateSimilarity(compare.projections);

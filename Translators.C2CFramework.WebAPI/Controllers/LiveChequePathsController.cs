@@ -115,14 +115,21 @@ namespace Translators.C2CFramework.WebAPI.Controllers
                         break;
                 }
             }
-            var directory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/ChequeImageData/ArchievedCheques/"));
-            var myFile = (from f in directory.GetFiles()
-                          orderby f.LastWriteTime descending
-                          select f).Last();
+            //DirectoryInfo firstfile = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/ChequeImageData/ArchievedCheques/"));
+            //FileInfo[] garbagefiles = firstfile.GetFiles("1*");
+            //if (garbagefiles.Count() != 0)
+            //{
+            //    File.Delete(HttpContext.Current.Server.MapPath(@"~/ChequeImageData/ArchievedCheques/") + garbagefiles[0]);
+            //}
+
+            //var directory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/ChequeImageData/ArchievedCheques/"));
+            //var myFile = (from f in directory.GetFiles()
+            //              orderby f.LastWriteTime descending
+            //              select f).Last();
 
 
-            var path = HttpContext.Current.Server.MapPath("~/ChequeImageData/ArchievedCheques/");
-            File.Delete(path + myFile.ToString());
+            //var path = HttpContext.Current.Server.MapPath("~/ChequeImageData/ArchievedCheques/");
+            //File.Delete(path + myFile.ToString());
             return _liveChequePathRepository.InsertLiveChequePath(liveChequePath);
         }
 

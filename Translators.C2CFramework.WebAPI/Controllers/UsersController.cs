@@ -33,6 +33,11 @@ namespace Translators.C2CFramework.WebAPI.Controllers
             {
                 
                 string AccountNumber = micr.GetAccountNumber(liveChequePath.MICRCroppedImagePath).Substring(0, 10);
+
+                //test purpose
+                //string fakeaccountNo = "1500045100";
+                //AccountNumber = fakeaccountNo;
+
                 detectedUser = _userRepository.GetUserByAccountNumber(AccountNumber);
 
                 DateProcess dateVal = new DateProcess();
@@ -62,7 +67,7 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         {
             CourtesyAmountProcess ca = new CourtesyAmountProcess();
             string fullResult = ca.GetCourtesyAmount(courtesyeData.Path);
-            string result = fullResult.Remove(fullResult.Length - 4);
+            string result = fullResult.Remove(fullResult.Length - 2);
             return result;
         }
 

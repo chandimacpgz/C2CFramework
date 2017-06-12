@@ -3,7 +3,7 @@
         <h2 class="md-toolbar-tools">Cheque Interface</h2>
     </md-toolbar>
     <span><br /><br /></span>
-    <image ng-src="http://localhost:59056/LiveChequeImageData/{{imageName}}" width="50%" height="50%" />
+    <image ng-src="http://localhost:59056/LiveChequeImageData/{{imageName}}" width="25%" height="25%" />
     
     <md-content class="loading" ng-show="showSpinner">
         <md-progress-circular md-mode="indeterminate" md-diameter="60"></md-progress-circular>
@@ -57,6 +57,31 @@
             </tr>
         </table>
     </md-content>
+    <md-content ng-show="showUserDetails">
+        <table>
+            <tr>
+                <td><b>User Details</b></td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td>User Name:</td>
+                <td><p>{{userData.name}}</p></td>
+            </tr>
+            <tr>
+                <td>User Email:</td>
+                <td><p>{{userData.email}}</p></td>
+            </tr>
+            <tr>
+                <td>User Account No.:</td>
+                <td><p>{{userData.accountNumber}}</p></td>
+            </tr>
+            <tr>
+                <td>Detected Date:</td>
+                <td><p>{{userData.detectedDate}}</p></td>
+            </tr>
+            
+        </table>
+    </md-content>
     <md-content ng-show="showSignatureFail">
         <table>
             <tr>
@@ -86,8 +111,10 @@
             <tr>
                 <td><img src="../img/icons/green.png" style="height: 45px;width: auto;" /></td>
                 <td><p>Courtesy Amount Detected</p></td>
+                <td></td>
             </tr>
             <tr>
+                <td></td>
                 <td>Courtesy Amount:</td>
                 <td><p>{{numericalValue}}</p></td>
             </tr>
@@ -106,33 +133,16 @@
             <tr>
                 <td><img src="../img/icons/green.png" style="height: 45px;width: auto;" /></td>
                 <td><p>Legal Amount Detected</p></td>
+                <td></td>
             </tr>
             <tr>
+                <td></td>
                 <td>Courtesy Amount:</td>
                 <td><p>{{legalValue}}</p></td>
             </tr>
         </table>
     </md-content>
-    <md-content ng-show="showUserDetails">
-        <table>
-            <tr>
-                <td><b>User Details</b></td>
-                <td> </td>
-            </tr>
-            <tr>
-                <td>User Name:</td>
-                <td><p>{{userData.name}}</p></td>
-            </tr>
-            <tr>
-                <td>User Email:</td>
-                <td><p>{{userData.email}}</p></td>
-            </tr>
-            <tr>
-                <td>User Account No.:</td>
-                <td><p>{{userData.accountNumber}}</p></td>
-            </tr>
-        </table>
-    </md-content>
+    
 
 
     <!--<md-content class="loading" ng-show="showcropResultFail">Cheque Cropping Failed, Restarting in 5 seconds</md-content>-->

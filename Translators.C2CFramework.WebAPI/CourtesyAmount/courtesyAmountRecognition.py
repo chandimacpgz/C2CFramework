@@ -2,7 +2,6 @@ import ast
 import cv2
 import numpy as np
 import operator
-import os
 import inflect
 import sys
 
@@ -11,58 +10,57 @@ def handWrittenDigitRecognition (path):
 
     class ContourWithData():
 
-        npaContour = None
-        boundingRect = None
+        digitContour = None
+        boundingRectofDigit = None
         intRectX = 0
         intRectY = 0
         intRectWidth = 0
         intRectHeight = 0
-        fltArea = 0.0
+        areaOfContour = 0.0
 
         def calculateRectTopLeftPointAndWidthAndHeight(self):
-            [intX, intY, intWidth, intHeight] = self.boundingRect
+            [intX, intY, intWidth, intHeight] = self.boundingRectofDigit
             self.intRectX = intX
             self.intRectY = intY
             self.intRectWidth = intWidth
             self.intRectHeight = intHeight
 
         def checkIfContourIsValid(self):
-            if self.fltArea < 100: return False
+            if self.areaOfContour < 100: return False
             return True
 
     def main():
         allContoursWithData = []
         validContoursWithData = []
 
-        npaClassifications = np.loadtxt("classifications.txt", np.float32)
+        digitClassificationCluster = np.loadtxt("digit_Classification_Cluster.txt", np.float32)
+        flattenedDigitImageVector = np.loadtxt("knn_Flattened_Digit_Images.txt", np.float32)
 
-        npaFlattenedImages = np.loadtxt("KNN_flattened_images_cluster.txt", np.float32)
+        digitClassificationCluster = digitClassificationCluster.reshape((digitClassificationCluster.size, 1))
 
-        npaClassifications = npaClassifications.reshape((npaClassifications.size, 1))
+        kNearestNeighbor = cv2.ml.KNearest_create()
 
-        kNearest = cv2.ml.KNearest_create()
+        kNearestNeighbor.train(flattenedDigitImageVector, cv2.ml.ROW_SAMPLE, digitClassificationCluster)
 
-        kNearest.train(npaFlattenedImages, cv2.ml.ROW_SAMPLE, npaClassifications)
+        courtesyAmountInput = cv2.imread(path, cv2.IMREAD_UNCHANGED )
 
-        imgTestingNumbers = cv2.imread(path, cv2.IMREAD_UNCHANGED )
+        courtesyAmountInput = cv2.fastNlMeansDenoisingColored(courtesyAmountInput, None, 10, 10, 7, 21)
 
-        imgTestingNumbers = cv2.fastNlMeansDenoisingColored(imgTestingNumbers, None, 10, 10, 7, 21)
+        grayScalledImg = cv2.cvtColor(courtesyAmountInput, cv2.COLOR_BGR2GRAY)
+        blurredImg = cv2.GaussianBlur(grayScalledImg, (5,5), 0)
 
-        imgGray = cv2.cvtColor(imgTestingNumbers, cv2.COLOR_BGR2GRAY)
-        imgBlurred = cv2.GaussianBlur(imgGray, (5,5), 0)
+        binarizedImg = cv2.adaptiveThreshold(blurredImg,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY_INV,11,2)
 
-        imgThresh = cv2.adaptiveThreshold(imgBlurred,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY_INV,11,2)
+        binarizedImgCopy = binarizedImg.copy()
 
-        imgThreshCopy = imgThresh.copy()
+        imgContours, digitContours, npaHierarchy = cv2.findContours(binarizedImgCopy, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-        imgContours, npaContours, npaHierarchy = cv2.findContours(imgThreshCopy, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-        for npaContour in npaContours:
+        for digitContour in digitContours:
             contourWithData = ContourWithData()
-            contourWithData.npaContour = npaContour
-            contourWithData.boundingRect = cv2.boundingRect(contourWithData.npaContour)
+            contourWithData.digitContour = digitContour
+            contourWithData.boundingRectofDigit = cv2.boundingRect(contourWithData.digitContour)
             contourWithData.calculateRectTopLeftPointAndWidthAndHeight()
-            contourWithData.fltArea = cv2.contourArea(contourWithData.npaContour)
+            contourWithData.areaOfContour = cv2.contourArea(contourWithData.digitContour)
             allContoursWithData.append(contourWithData)
 
         for contourWithData in allContoursWithData:
@@ -74,32 +72,39 @@ def handWrittenDigitRecognition (path):
         courtesyAmountStringValue = ""
 
         for contourWithData in validContoursWithData:
-            cv2.rectangle(imgTestingNumbers,(contourWithData.intRectX, contourWithData.intRectY),(contourWithData.intRectX + contourWithData.intRectWidth, contourWithData.intRectY + contourWithData.intRectHeight),(0, 255, 0),2)
+            cv2.rectangle(courtesyAmountInput,(contourWithData.intRectX, contourWithData.intRectY),(contourWithData.intRectX + contourWithData.intRectWidth, contourWithData.intRectY + contourWithData.intRectHeight),(0, 255, 0),2)
 
-            imgROI = imgThresh[contourWithData.intRectY: contourWithData.intRectY + contourWithData.intRectHeight,contourWithData.intRectX: contourWithData.intRectX + contourWithData.intRectWidth]
+            ROI = binarizedImg[contourWithData.intRectY: contourWithData.intRectY + contourWithData.intRectHeight,contourWithData.intRectX: contourWithData.intRectX + contourWithData.intRectWidth]
 
-            imgROIResized = cv2.resize(imgROI, (20, 30))
+            ROIResized = cv2.resize(ROI, (20, 30))
 
-            npaROIResized = imgROIResized.reshape((1, 20 * 30))
+            npaROIResized = ROIResized.reshape((1, 20 * 30))
 
             npaROIResized = np.float32(npaROIResized)
 
-            retval, npaResults, neigh_resp, dists = kNearest.findNearest(npaROIResized, k = 1)
+            retval, npaResults, neigh_resp, dists = kNearestNeighbor.findNearest(npaROIResized, k = 1)
 
             strCurrentChar = str(chr(int(npaResults[0][0])))
 
             courtesyAmountStringValue = courtesyAmountStringValue + strCurrentChar
 
+
         courtesyAmountIntValue = ast.literal_eval(courtesyAmountStringValue)
 
-        # courtesyAmountIntValueList = map(int, str(courtesyAmountIntValue))
+        courtesyAmountIntValueList = map(int, str(courtesyAmountIntValue))
 
-        p = inflect.engine()
-        courtesyAmountInWord = p.number_to_words(courtesyAmountIntValue)
+        del courtesyAmountIntValueList[-2:]
 
-        print courtesyAmountStringValue #+ "\n" + "\n" + courtesyAmountInWord
+        courtesyAmountStringValue = ''.join(str(e) for e in courtesyAmountIntValueList)
 
-        # cv2.imshow("Segmented Characters", imgTestingNumbers)
+        courtesyAmountIntValue = ast.literal_eval(courtesyAmountStringValue)
+
+        courtesyAmountInWord = inflect.engine().number_to_words(courtesyAmountIntValue)
+
+        print courtesyAmountStringValue
+        #print courtesyAmountInWord
+
+        # cv2.imshow("Segmented Characters",courtesyAmountInput)
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
 

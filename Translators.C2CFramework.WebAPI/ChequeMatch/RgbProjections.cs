@@ -4,9 +4,6 @@ using System.Linq;
 
 namespace Translators.C2CFramework.WebAPI.ChequeMatch
 {
-    /// <summary>
-    /// Represents RGB projections, horizontal and vertical.
-    /// </summary>
     public class RgbProjections
     {
         private readonly double[] horizontalProjection;
@@ -38,25 +35,14 @@ namespace Translators.C2CFramework.WebAPI.ChequeMatch
                 return verticalProjection; 
             }            
         }
-
-        /// <summary>
-        /// Calculate the similarity between two RGB projections, horizontal and vertical.
-        /// </summary>
-        /// <param name="compare">The RGB projection to compare with.</param>
-        /// <returns>Return the max similarity value betweem horizontal and vertical RGB projections.</returns>
+        
         public double CalculateSimilarity(RgbProjections compare) 
         {
             var horizontalSimilarity = CalculateProjectionSimilarity(horizontalProjection, compare.horizontalProjection);
             var verticalSimilarity = CalculateProjectionSimilarity(verticalProjection, compare.verticalProjection);
             return Math.Max(horizontalSimilarity, verticalSimilarity);            
         }
-
-        /// <summary>
-        /// Calculate the similarity to another RGB projection.
-        /// </summary>
-        /// <param name="source">The source RGB projection.</param>
-        /// <param name="compare">The RGB projection to compare with.</param>
-        /// <returns>Return a value from 0 to 1 that is the similarity.</returns>
+        
         private static double CalculateProjectionSimilarity(double[] source, double[] compare)
         {
             if (source.Length != compare.Length)
@@ -66,7 +52,6 @@ namespace Translators.C2CFramework.WebAPI.ChequeMatch
 
             var frequencies = new Dictionary<double, int>();
 
-            ////Calculate frequencies
             for (var i = 0; i < source.Length; i++) 
             {
                 var difference = source[i] - compare[i];
@@ -84,11 +69,8 @@ namespace Translators.C2CFramework.WebAPI.ChequeMatch
 
             var deviation = frequencies.Sum(value => (value.Key * value.Value));
 
-            ////Calculate "weighted mean"
-            ////http://en.wikipedia.org/wiki/Weighted_mean
             deviation /= source.Length;
-            
-            ////Maximize scale
+
             deviation = (0.5 - deviation) * 2;
 
             return deviation;

@@ -4,9 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Translators.C2CFramework.WebAPI.ChequeMatch
 {
-    /// <summary>
-    /// Represents a comparable images class.
-    /// </summary>
     public class SimilarityImages : IComparer<SimilarityImages>, IComparable
     {
         private readonly ComparableImage source;

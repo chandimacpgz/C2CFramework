@@ -84,7 +84,7 @@
                 //Get MICR and AccountNo
                 HomeService.getUser(liveChequePaths).then(function (state) {
                     $scope.userData = state;
-                    if ($scope.userData.id !== null) {
+                    if ($scope.userData !== null) {
                         $scope.showUserDetails = true;
                         getSignatureVerification(liveChequePaths, $scope.userData);
                     }

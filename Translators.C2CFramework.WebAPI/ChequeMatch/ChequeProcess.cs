@@ -18,8 +18,6 @@ namespace Translators.C2CFramework.WebAPI.ChequeMatch
 
             var comparableImages = new List<ComparableImage>();
 
-            // copy to temp
-
             var tempath = Path.GetTempFileName();
             File.Delete(tempath);
             Directory.CreateDirectory(tempath);
@@ -44,7 +42,7 @@ namespace Translators.C2CFramework.WebAPI.ChequeMatch
 
             for (var j = 1; j < comparableImages.Count; j++)
             {
-                var source = comparableImages[0];      //Match with the first image of the Cheque List
+                var source = comparableImages[0];
                 var destination = comparableImages[j];
                 var similarity = source.CalculateSimilarity(destination);
                 var sim = new SimilarityImages(source, destination, similarity);
