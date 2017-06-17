@@ -53,7 +53,7 @@ namespace Translators.C2CFramework.WebAPI.ChequeMatch
             similarityImagesSorted.Sort();
             similarityImagesSorted.Reverse();
 
-            if (similarityImagesSorted[0].Similarity >= 85)
+            if (similarityImagesSorted[0].Similarity >= 80)
             {
                 string selectedCheque = similarityImagesSorted[0].Destination.ToString();
                 Cheque selectedChequeData = _chequeRepository.GetChequeDataByChequePath(selectedCheque);

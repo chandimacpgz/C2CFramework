@@ -3,6 +3,36 @@ import numpy as np
 import operator
 import sys
 
+from difflib import SequenceMatcher
+import sys
+
+
+def SyntacticValidation(erroneousInput):
+    temp = 0
+    outputString = ""
+    with open ("NumberList.txt", "r") as myfile:
+        data = myfile.readlines()
+
+        for item in data:
+
+            # item = item + 'only'
+            item = item.upper()
+            item = item.strip()
+
+            # print item
+
+            percentage = SequenceMatcher(None, item, erroneousInput).ratio()
+
+            # print percentage
+            
+            if percentage >= 0.6:
+                if temp<percentage:
+                    temp = percentage
+                    outputString = item
+    
+    print outputString
+    
+    return
 
 def handWrittenAlphabetRecognition (path):
 
@@ -87,8 +117,9 @@ def handWrittenAlphabetRecognition (path):
 
             legalAmountStringValue = legalAmountStringValue + strCurrentChar
 
+        correctedlegalAmountStringValue = SyntacticValidation(legalAmountStringValue)
 
-        print legalAmountStringValue
+        print correctedlegalAmountStringValue
 
         # cv2.imshow("Segmented Characters",courtesyAmountInput)
         # cv2.waitKey(0)

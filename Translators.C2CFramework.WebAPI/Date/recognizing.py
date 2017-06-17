@@ -231,6 +231,30 @@ def dateRecognitionAndVerification(path):
         else:
             textToPrint = "Date Cannot Detect ..."
 
+        # date = StringDetectedDate.replace('-', '')
+        # dateList = list(date)
+
+        # date = dateList[0] + dateList[1]
+
+        # if dateList[2] == "0":
+        #     month = dateList[3]
+        # else:
+        #     month = dateList[2] + dateList[3]
+
+        # year = dateList[4] + dateList[5] + dateList[6] + dateList[7]
+
+        # monthAsInt = ast.literal_eval(month)
+
+        # monthInWords = calendar.month_abbr[monthAsInt]
+
+        # dateAsInt = ast.literal_eval(date)
+
+        # ordinal = lambda n: "%d%s" % (n,"tsnrhtdd"[(n/10%10!=1)*(n%10<4)*n%10::4])
+
+        # dateAsOrdinal =  ordinal(dateAsInt)
+
+        # print dateAsOrdinal + " of " + monthInWords + " " + year + " " + textToPrint
+
         print(StringDetectedDate + " " + textToPrint)
 
 

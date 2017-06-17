@@ -17,6 +17,7 @@
         $scope.showSignatureDone = false;
         $scope.showSignatureFail = false;
         $scope.showDateFail = false;
+        $scope.courtesyPending = false;
         
 
         //Get Live Cheque Image Name
@@ -84,7 +85,7 @@
                 //Get MICR and AccountNo
                 HomeService.getUser(liveChequePaths).then(function (state) {
                     $scope.userData = state;
-                    if ($scope.userData !== null) {
+                    if ($scope.userData.id !== 0) {
                         $scope.showUserDetails = true;
                         getSignatureVerification(liveChequePaths, $scope.userData);
                     }
@@ -112,7 +113,8 @@
                     else {
                         $scope.showSignatureFail = true;
                         var error = "Invalid Signature, Cannot Proceed. Restarting in 5 seconds";
-                        showError(error);
+                        //showError(error);
+                        getNumericalAmountVerification(liveChequePaths);
                     }
                 });
 
@@ -140,16 +142,19 @@
 
             var getAmountVerification = function (liveChequePaths) {
                 //Get Courtesy Amount
+                $scope.courtesyPending = true;
                 var legalData = {
                     "path": liveChequePaths.amountCroppedImagePath
                 };
                 HomeService.getAmount(legalData).then(function (state) { ////////////////////check returns
                     $scope.legalValue = state;
                     if ($scope.legalValue !== null) {
+                        $scope.courtesyPending = false;
                         $scope.showLegalDone = true;
                     }
                     else {
                         $scope.showLegalFail = true;
+                        $scope.courtesyPending = false;
                         var error = "Legal Amount Not Detected, Cannot Proceed. Restarting in 5 seconds";
                         showError(error);
                     }

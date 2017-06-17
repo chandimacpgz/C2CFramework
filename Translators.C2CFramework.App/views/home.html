@@ -45,7 +45,7 @@
         <table>
             <tr>
                 <td><img src="../img/icons/red.png" style="height: 45px;width: auto;" /></td>
-                <td><p>MICR Detection Failed</p></td>
+                <td><p>MICR Detection Failed : {{userData.path}}</p></td>
             </tr>
         </table>
     </md-content>
@@ -60,22 +60,27 @@
     <md-content ng-show="showUserDetails">
         <table>
             <tr>
+                <td><img src="../img/icons/green.png" style="height: 45px;width: auto;" /></td>
                 <td><b>User Details</b></td>
                 <td> </td>
             </tr>
             <tr>
+                <td></td>
                 <td>User Name:</td>
                 <td><p>{{userData.name}}</p></td>
             </tr>
             <tr>
+                <td></td>
                 <td>User Email:</td>
                 <td><p>{{userData.email}}</p></td>
             </tr>
             <tr>
+                <td></td>
                 <td>User Account No.:</td>
                 <td><p>{{userData.accountNumber}}</p></td>
             </tr>
             <tr>
+                <td><img src="../img/icons/green.png" style="height: 45px;width: auto;" /></td>
                 <td>Detected Date:</td>
                 <td><p>{{userData.detectedDate}}</p></td>
             </tr>
@@ -120,6 +125,17 @@
             </tr>
         </table>
     </md-content>
+    <md-content ng-show="courtesyPending">
+        <table>
+            <tr>
+
+
+                <td><md-progress-circular md-mode="indeterminate" md-diameter="40"></md-progress-circular></td>
+                <td><p>Legal Amount Detecting</p></td>
+                <td></td>
+            </tr>
+        </table>
+    </md-content>
     <md-content ng-show="showLegalFail">
         <table>
             <tr>
@@ -137,7 +153,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td>Courtesy Amount:</td>
+                <td>Legal Amount:</td>
                 <td><p>{{legalValue}}</p></td>
             </tr>
         </table>

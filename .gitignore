@@ -245,3 +245,10 @@ ModelManifest.xml
 *.VC.db
 /Translators.C2CFramework.Database/Translators.C2CFramework.Database.jfm
 /Translators.C2CFramework.App/bower_components
+/Translators.C2CFramework.WebAPI/ChequeImageData/ArchievedCheques/pb_1.jpg
+/Translators.C2CFramework.WebAPI/ChequeImageData/ArchievedCheques/ntb_1.jpg
+/Translators.C2CFramework.WebAPI/ChequeImageData/ArchievedCheques/hnb_1.jpg
+/Translators.C2CFramework.WebAPI/ChequeImageData/ArchievedCheques/fdndf.jpg
+/Translators.C2CFramework.WebAPI/ChequeImageData/ArchievedCheques/dbfdb.jpg
+/Translators.C2CFramework.WebAPI/ChequeImageData/ArchievedCheques/boc_2.jpg
+/Translators.C2CFramework.WebAPI/ChequeImageData/ArchievedCheques/195751.jpg

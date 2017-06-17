@@ -101,7 +101,7 @@ def handWrittenDigitRecognition (path):
 
         courtesyAmountInWord = inflect.engine().number_to_words(courtesyAmountIntValue)
 
-        print courtesyAmountStringValue
+        print courtesyAmountStringValue + "/-"
         #print courtesyAmountInWord
 
         # cv2.imshow("Segmented Characters",courtesyAmountInput)

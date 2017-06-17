@@ -113,9 +113,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ChequeMatchApp\ChequeMatchWindowsApp.exe" />
+    <Content Include="CourtesyAmount\courtesyAmountRecognition.py" />
+    <Content Include="CourtesyAmount\digit_Classification_Cluster.txt" />
+    <Content Include="CourtesyAmount\knn_Flattened_Digit_Images.txt" />
+    <Content Include="Date\GenDatanewnewclassifications.txt" />
+    <Content Include="Date\GenDatanewnewflattened_images.txt" />
+    <Content Include="Date\recognizing.py" />
     <Content Include="DLLs\MWArray.dll" />
     <Content Include="DLLs\SignatureVerification.dll" />
     <Content Include="Global.asax" />
+    <Content Include="LegalAmount\alphabet_Classification_Cluster.txt" />
+    <Content Include="LegalAmount\knn_Flattened_alphabetic_Images.txt" />
+    <Content Include="LegalAmount\legalAmountRecognition.py" />
+    <Content Include="LegalAmount\NumberList.txt" />
+    <Content Include="MICR\GenDataTrainedInput1ClassificationsInput.txt" />
+    <Content Include="MICR\GenDataTrainedInput1FlattenedImagesInput.txt" />
+    <Content Include="MICR\rec2.py" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

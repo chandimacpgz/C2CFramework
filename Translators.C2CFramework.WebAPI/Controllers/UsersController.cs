@@ -29,10 +29,11 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         {
             User detectedUser = new User();
             MICRProcess micr = new MICRProcess();
+            string AccountNumber = "";
             try
             {
                 
-                string AccountNumber = micr.GetAccountNumber(liveChequePath.MICRCroppedImagePath).Substring(0, 10);
+                AccountNumber = micr.GetAccountNumber(liveChequePath.MICRCroppedImagePath).Substring(0, 10);
 
                 //test purpose
                 //string fakeaccountNo = "1500045100";
@@ -43,13 +44,17 @@ namespace Translators.C2CFramework.WebAPI.Controllers
                 DateProcess dateVal = new DateProcess();
                 string detDate = dateVal.CheckDate(liveChequePath.DateCroppedImagePath);
                 detectedUser.DetectedDate = detDate.Remove(detDate.Length - 2);
+                return detectedUser;
             }
             catch(Exception e)
             {
-                return detectedUser;
+                User detectedUser1 = new User();
+                detectedUser1.Path = AccountNumber;
+                detectedUser1.Id = 0;
+                return detectedUser1;
             }
 
-            return detectedUser;
+            
         }
 
         [Route("Users/Signature")]
@@ -65,9 +70,14 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         [HttpPost]
         public string PostNumericalAmount([FromBody]User courtesyeData)
         {
+            string result = "";
             CourtesyAmountProcess ca = new CourtesyAmountProcess();
             string fullResult = ca.GetCourtesyAmount(courtesyeData.Path);
-            string result = fullResult.Remove(fullResult.Length - 2);
+            if(fullResult != "")
+            {
+                result = fullResult.Remove(fullResult.Length - 2);
+            }
+            
             return result;
         }
 
@@ -75,9 +85,14 @@ namespace Translators.C2CFramework.WebAPI.Controllers
         [HttpPost]
         public string PostAmount([FromBody]User legalData)
         {
+            string full = "";
             LegalAmountProcess la = new LegalAmountProcess();
             string result = la.GetLegalAmount(legalData.Path);
-            return result;
+            if (result != "")
+            {
+                full = result.Remove(result.Length - 8);
+            }
+            return full;
         }
     }
 }
